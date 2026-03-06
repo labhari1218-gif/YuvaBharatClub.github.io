@@ -1,0 +1,34 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { getPublicInitiatives } from "../../lib/content";
+import InitiativeCard from "../../components/ui/InitiativeCard.astro";
+import SectionHeading from "../../components/ui/SectionHeading.astro";
+
+const initiatives = await getPublicInitiatives();
+---
+
+<BaseLayout
+  title="Initiatives | Yuva Bharat Club"
+  description="Discover the club’s recurring ideas and long-term themes, built around youth participation, community spirit, and meaningful engagement."
+>
+  <section class="page-hero">
+    <div class="container">
+      <p class="section-heading__eyebrow">Initiatives</p>
+      <h1>Recurring formats and long-term themes</h1>
+      <p class="page-hero__lead">These entries give the club a language for its ongoing work beyond one-off events.</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <SectionHeading
+        eyebrow="Public overview"
+        title="Programs shaped for continuity"
+        description="Each initiative page should explain what the work is for, how it contributes to campus life, and where it connects to the club’s events or reports."
+      />
+      <div class="card-grid">
+        {initiatives.map((initiative) => <InitiativeCard initiative={initiative} />)}
+      </div>
+    </div>
+  </section>
+</BaseLayout>

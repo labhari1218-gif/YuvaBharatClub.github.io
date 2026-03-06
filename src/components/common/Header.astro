@@ -1,0 +1,43 @@
+---
+import MobileNav from "./MobileNav.astro";
+import { assetUrl, isCurrentPath, navLinks, withBase } from "../../lib/site";
+
+interface Props {
+  currentPath: string;
+  siteTitle: string;
+  shortTitle: string;
+}
+
+const { currentPath, siteTitle, shortTitle } = Astro.props;
+---
+
+<header class="site-header">
+  <div class="container site-header__inner">
+    <a class="brandmark" href={withBase("/")}>
+      <img src={assetUrl("/logo/ybc-logo-mark.png")} alt={`${siteTitle} logo`} width="56" height="56" />
+      <span>
+        <strong>{shortTitle}</strong>
+        <small>{siteTitle}</small>
+      </span>
+    </a>
+
+    <nav class="desktop-nav" aria-label="Primary">
+      <ul>
+        {
+          navLinks.map((link) => (
+            <li>
+              <a
+                href={withBase(link.href)}
+                aria-current={isCurrentPath(currentPath, link.href) ? "page" : undefined}
+              >
+                {link.label}
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </nav>
+
+    <MobileNav currentPath={currentPath} />
+  </div>
+</header>

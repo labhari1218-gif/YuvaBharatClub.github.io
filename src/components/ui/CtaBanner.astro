@@ -1,0 +1,36 @@
+---
+import { withBase } from "../../lib/site";
+
+interface Props {
+  title: string;
+  copy: string;
+  primaryLabel: string;
+  primaryHref: string;
+  secondaryLabel?: string;
+  secondaryHref?: string;
+}
+
+const {
+  title,
+  copy,
+  primaryLabel,
+  primaryHref,
+  secondaryLabel,
+  secondaryHref
+} = Astro.props;
+---
+
+<section class="cta-banner">
+  <div class="cta-banner__content">
+    <p class="section-heading__eyebrow">Get involved</p>
+    <h2>{title}</h2>
+    <p>{copy}</p>
+  </div>
+
+  <div class="cta-banner__actions">
+    <a class="button" href={withBase(primaryHref)}>{primaryLabel}</a>
+    {secondaryLabel && secondaryHref && (
+      <a class="button button--ghost" href={withBase(secondaryHref)}>{secondaryLabel}</a>
+    )}
+  </div>
+</section>

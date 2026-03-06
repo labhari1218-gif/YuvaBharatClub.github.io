@@ -1,0 +1,57 @@
+{
+  "siteTitle": "Yuva Bharat Club",
+  "shortTitle": "YBC",
+  "siteDescription": "Student-led initiatives, dialogue, and campus action at IISER Bhopal.",
+  "campusName": "IISER Bhopal",
+  "email": "contact@yuva-bharat-club.example",
+  "instagramUrl": "https://example.com/replace-with-official-instagram",
+  "linkedinUrl": "https://example.com/replace-with-official-linkedin",
+  "heroTaglineEn": "Build ideas. Lead events. Participate with purpose.",
+  "heroTaglineHi": "युवा ऊर्जा, संवाद और सार्थक सहभागिता का मंच।",
+  "footerText": "A student-led platform at IISER Bhopal for youth leadership, campus participation, events, dialogue, and community-driven action.",
+  "seoImage": "/logo/ybc-logo-reference.png",
+  "defaultLocale": "en",
+  "supportedLocales": [
+    "en",
+    "hi"
+  ],
+  "announcementBar": {
+    "enabled": true,
+    "text": "This v1 site uses privacy-safe placeholder media where final approved assets are still being prepared."
+  },
+  "registrationLinks": [
+    {
+      "label": "Volunteer interest form",
+      "href": "https://example.com/replace-with-join-form"
+    }
+  ],
+  "focusPillars": [
+    {
+      "title": "Dialogue",
+      "description": "Thoughtful conversations, youth-centered forums, and public speaking spaces that encourage clarity and participation."
+    },
+    {
+      "title": "Participation",
+      "description": "Events, volunteering, and campus collaborations that turn interest into visible action."
+    },
+    {
+      "title": "Leadership",
+      "description": "Student-led planning, ownership, teamwork, and execution across activities and initiatives."
+    },
+    {
+      "title": "Documentation",
+      "description": "Reports, highlights, and visual archives that preserve institutional memory for future student teams."
+    }
+  ],
+  "homepage": {
+    "featuredEventSlug": "campus-dialogue-series-april-2026",
+    "featuredReportSlugs": [
+      "national-youth-day-summary-2026",
+      "public-speaking-showcase-note"
+    ],
+    "featuredGallerySlugs": [
+      "national-youth-day-highlights",
+      "team-and-volunteer-prep"
+    ]
+  }
+}

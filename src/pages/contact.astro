@@ -1,0 +1,48 @@
+---
+import { render } from "astro:content";
+import BaseLayout from "../layouts/BaseLayout.astro";
+import SectionHeading from "../components/ui/SectionHeading.astro";
+import { getPageEntry, getSiteSettings } from "../lib/content";
+
+const page = await getPageEntry("contact");
+const settings = await getSiteSettings();
+const { Content } = await render(page);
+const socials = [
+  settings.instagramUrl ? { label: "Instagram", href: settings.instagramUrl } : undefined,
+  settings.linkedinUrl ? { label: "LinkedIn", href: settings.linkedinUrl } : undefined,
+  settings.youtubeUrl ? { label: "YouTube", href: settings.youtubeUrl } : undefined
+].filter(Boolean) as { label: string; href: string }[];
+---
+
+<BaseLayout
+  title={page.data.seoTitle ?? page.data.title}
+  description={page.data.seoDescription ?? page.data.description}
+>
+  <section class="page-hero">
+    <div class="container">
+      <p class="section-heading__eyebrow">Contact</p>
+      <h1>{page.data.title}</h1>
+      <p class="page-hero__lead">{page.data.intro}</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container page-grid">
+      <article class="prose surface">
+        <Content />
+      </article>
+
+      <aside class="sidebar-card">
+        <SectionHeading title="Official public channels" description="Replace the placeholder links here once the final approved handles are available." />
+        <ul class="feature-list">
+          <li><a href={`mailto:${settings.email}`}>{settings.email}</a></li>
+          {socials.map((social) => (
+            <li>
+              <a href={social.href} target="_blank" rel="noreferrer">{social.label}</a>
+            </li>
+          ))}
+        </ul>
+      </aside>
+    </div>
+  </section>
+</BaseLayout>

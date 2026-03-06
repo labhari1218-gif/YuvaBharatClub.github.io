@@ -1,0 +1,54 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import EventCard from "../../components/events/EventCard.astro";
+import EmptyState from "../../components/ui/EmptyState.astro";
+import SectionHeading from "../../components/ui/SectionHeading.astro";
+import { getPublicEvents } from "../../lib/content";
+
+const events = await getPublicEvents();
+const upcoming = events.filter((event) => event.data.status === "upcoming");
+const past = events.filter((event) => event.data.status !== "upcoming");
+---
+
+<BaseLayout
+  title="Events | Yuva Bharat Club"
+  description="Explore upcoming and past Yuva Bharat Club events, from campus discussions and competitions to student-led public activities."
+>
+  <section class="page-hero">
+    <div class="container">
+      <p class="section-heading__eyebrow">Events</p>
+      <h1>Upcoming and past campus activity</h1>
+      <p class="page-hero__lead">Explore event pages built for clear public summaries, approved media, and simple next steps.</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <SectionHeading
+        eyebrow="Upcoming"
+        title="What’s next"
+        description="Public registration links and final venue notes should always be confirmed before publishing."
+      />
+      {upcoming.length ? (
+        <div class="card-grid">{upcoming.map((event) => <EventCard event={event} />)}</div>
+      ) : (
+        <EmptyState title="No upcoming events yet" copy="Add the next approved event entry to the content collection to populate this section." />
+      )}
+    </div>
+  </section>
+
+  <section class="section section--cream">
+    <div class="container">
+      <SectionHeading
+        eyebrow="Archive"
+        title="Past event summaries"
+        description="These pages show how the club can preserve a public record without overloading the website."
+      />
+      {past.length ? (
+        <div class="card-grid">{past.map((event) => <EventCard event={event} />)}</div>
+      ) : (
+        <EmptyState title="No past events yet" copy="Approved event summaries will appear here once content has been added." />
+      )}
+    </div>
+  </section>
+</BaseLayout>

@@ -1,0 +1,53 @@
+---
+import { assetUrl, withBase } from "../../lib/site";
+
+interface SocialLink {
+  label: string;
+  href: string;
+}
+
+interface Props {
+  footerText: string;
+  siteTitle: string;
+  email: string;
+  socials: SocialLink[];
+}
+
+const { footerText, siteTitle, email, socials } = Astro.props;
+---
+
+<footer class="site-footer">
+  <div class="container site-footer__grid">
+    <div class="site-footer__brand">
+      <img src={assetUrl("/logo/ybc-logo-reference.png")} alt={`${siteTitle} logo`} width="92" height="92" />
+      <div>
+        <h2>{siteTitle}</h2>
+        <p>{footerText}</p>
+      </div>
+    </div>
+
+    <div>
+      <h3>Navigate</h3>
+      <ul class="footer-list">
+        <li><a href={withBase("/about")}>About</a></li>
+        <li><a href={withBase("/events")}>Events</a></li>
+        <li><a href={withBase("/reports")}>Reports</a></li>
+        <li><a href={withBase("/join")}>Join</a></li>
+      </ul>
+    </div>
+
+    <div>
+      <h3>Contact</h3>
+      <ul class="footer-list">
+        <li><a href={`mailto:${email}`}>{email}</a></li>
+        {
+          socials.map((social) => (
+            <li>
+              <a href={social.href} target="_blank" rel="noreferrer">{social.label}</a>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </div>
+</footer>

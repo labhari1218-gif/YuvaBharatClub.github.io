@@ -1,0 +1,124 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import FeaturedEventCard from "../components/home/FeaturedEventCard.astro";
+import GalleryPreview from "../components/home/GalleryPreview.astro";
+import Hero from "../components/home/Hero.astro";
+import HighlightsGrid from "../components/home/HighlightsGrid.astro";
+import JoinBanner from "../components/home/JoinBanner.astro";
+import PillarGrid from "../components/home/PillarGrid.astro";
+import QuickValueStrip from "../components/home/QuickValueStrip.astro";
+import ReportPreviewGrid from "../components/home/ReportPreviewGrid.astro";
+import TeamPreview from "../components/home/TeamPreview.astro";
+import SectionHeading from "../components/ui/SectionHeading.astro";
+import {
+  findBySlug,
+  getPublicEvents,
+  getPublicGalleryAlbums,
+  getPublicReports,
+  getPublicTeam,
+  getSiteSettings,
+  pickFeatured
+} from "../lib/content";
+
+const settings = await getSiteSettings();
+const events = await getPublicEvents();
+const reports = await getPublicReports();
+const galleryAlbums = await getPublicGalleryAlbums();
+const team = await getPublicTeam();
+
+const featuredEvent =
+  findBySlug(events, settings.homepage.featuredEventSlug) ?? events[0];
+const recentHighlights = events
+  .filter((event) => event.slug !== featuredEvent?.slug)
+  .slice(0, 2);
+const featuredReports = pickFeatured(reports, settings.homepage.featuredReportSlugs);
+const featuredAlbums = pickFeatured(galleryAlbums, settings.homepage.featuredGallerySlugs);
+const featuredTeam = team.slice(0, 3);
+---
+
+<BaseLayout title="Yuva Bharat Club" description={settings.siteDescription}>
+  <Hero settings={settings} />
+  <QuickValueStrip />
+
+  <section class="section">
+    <div class="container">
+      <SectionHeading
+        eyebrow="Focus pillars"
+        title="Built around participation, dialogue, and continuity"
+        description="The club works best when it balances ideas with execution, and public communication with careful documentation."
+      />
+      <PillarGrid pillars={settings.focusPillars} />
+    </div>
+  </section>
+
+  {featuredEvent && (
+    <section class="section">
+      <div class="container">
+        <SectionHeading
+          eyebrow="Featured event"
+          title="A current entry point into campus activity"
+          description="The homepage prioritizes one visible event so first-time visitors can understand what the club actually does."
+          actionLabel="All events"
+          actionHref="/events"
+        />
+        <FeaturedEventCard event={featuredEvent} />
+      </div>
+    </section>
+  )}
+
+  <section class="section">
+    <div class="container">
+      <SectionHeading
+        eyebrow="Past highlights"
+        title="Recent event snapshots"
+        description="Public-safe summaries and placeholder visuals are seeded here until final approved photos and notes are available."
+      />
+      <HighlightsGrid events={recentHighlights} />
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <SectionHeading
+        eyebrow="Gallery"
+        title="Approved visual archives"
+        description="Albums keep the site organized and future-student-friendly instead of dumping loose media into a single page."
+        actionLabel="View gallery"
+        actionHref="/gallery"
+      />
+      <GalleryPreview albums={featuredAlbums} />
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <SectionHeading
+        eyebrow="Reports"
+        title="Documentation that future teams can build on"
+        description="Short reports and event summaries help the club publish a public record without exposing private coordination."
+        actionLabel="Read reports"
+        actionHref="/reports"
+      />
+      <ReportPreviewGrid reports={featuredReports} />
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <SectionHeading
+        eyebrow="Team preview"
+        title="Public-facing roles that keep the work moving"
+        description="Profiles stay minimal on purpose and should only include approved, consented details."
+        actionLabel="Meet the team"
+        actionHref="/team"
+      />
+      <TeamPreview members={featuredTeam} />
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <JoinBanner joinUrl={settings.joinUrl} />
+    </div>
+  </section>
+</BaseLayout>

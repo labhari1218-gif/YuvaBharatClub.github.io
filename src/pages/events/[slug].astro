@@ -1,0 +1,81 @@
+---
+import { getCollection, render } from "astro:content";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import InlineLanguageLabel from "../../components/ui/InlineLanguageLabel.astro";
+import SectionHeading from "../../components/ui/SectionHeading.astro";
+import { formatDateRange } from "../../lib/date";
+import { assetUrl, withBase } from "../../lib/site";
+
+export async function getStaticPaths() {
+  const events = await getCollection("events", ({ data }) => data.public);
+  return events.map((event) => ({
+    params: { slug: event.slug },
+    props: { event }
+  }));
+}
+
+const { event } = Astro.props;
+const { Content } = await render(event);
+---
+
+<BaseLayout title={`${event.data.title} | Yuva Bharat Club`} description={event.data.summary} image={event.data.coverImage}>
+  <section class="detail-hero">
+    <div class="container detail-hero__grid">
+      <div>
+        <p class="section-heading__eyebrow">Event</p>
+        <h1>{event.data.title}</h1>
+        {event.data.titleHi && <InlineLanguageLabel label={event.data.titleHi} />}
+        <p class="page-hero__lead">{event.data.summary}</p>
+        <div class="detail-meta">
+          <span>{event.data.status}</span>
+          <span>{formatDateRange(event.data.startDate, event.data.endDate)}</span>
+          <span>{event.data.venue}</span>
+        </div>
+        <div class="hero__actions">
+          {event.data.registrationUrl && (
+            <a class="button" href={event.data.registrationUrl} target="_blank" rel="noreferrer">Register</a>
+          )}
+          {event.data.reportUrl && <a class="button button--ghost" href={withBase(event.data.reportUrl)}>Related report</a>}
+        </div>
+      </div>
+      <img class="detail-hero__image" src={assetUrl(event.data.coverImage)} alt={event.data.title} width="860" height="580" />
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container page-grid page-grid--detail">
+      <article class="prose surface">
+        <Content />
+      </article>
+
+      <aside class="sidebar-card">
+        <SectionHeading title="Event notes" description="Use this area for practical public information rather than internal coordination detail." />
+        <ul class="feature-list">
+          {event.data.partnerNames?.map((partner) => <li>{partner}</li>)}
+          {event.data.accessibilityNotes && <li>{event.data.accessibilityNotes}</li>}
+          {!event.data.partnerNames?.length && !event.data.accessibilityNotes && <li>Final public notes can be added here when approved.</li>}
+        </ul>
+      </aside>
+    </div>
+  </section>
+
+  {(event.data.posterImage || event.data.galleryImages?.length) && (
+    <section class="section section--cream">
+      <div class="container">
+        <SectionHeading
+          eyebrow="Visuals"
+          title="Approved supporting material"
+          description="Poster art and gallery previews should stay clean, approved, and easy to replace."
+        />
+        <div class="detail-visuals">
+          {event.data.posterImage && (
+            <img src={assetUrl(event.data.posterImage)} alt={`${event.data.title} poster`} width="420" height="560" />
+          )}
+          {event.data.galleryImages?.map((image) => (
+            <img src={assetUrl(image)} alt={`${event.data.title} gallery placeholder`} width="420" height="280" />
+          ))}
+        </div>
+      </div>
+    </section>
+  )}
+</BaseLayout>

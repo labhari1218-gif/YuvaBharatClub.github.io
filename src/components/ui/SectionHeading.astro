@@ -1,0 +1,26 @@
+---
+import { withBase } from "../../lib/site";
+
+interface Props {
+  eyebrow?: string;
+  title: string;
+  description?: string;
+  actionLabel?: string;
+  actionHref?: string;
+}
+
+const { eyebrow, title, description, actionLabel, actionHref } = Astro.props;
+---
+
+<div class="section-heading">
+  <div>
+    {eyebrow && <p class="section-heading__eyebrow">{eyebrow}</p>}
+    <h2>{title}</h2>
+    {description && <p class="section-heading__description">{description}</p>}
+  </div>
+  {actionLabel && actionHref && (
+    <a class="button button--ghost" href={withBase(actionHref)}>
+      {actionLabel}
+    </a>
+  )}
+</div>

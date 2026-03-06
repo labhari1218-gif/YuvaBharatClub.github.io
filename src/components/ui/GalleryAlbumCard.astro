@@ -1,0 +1,31 @@
+---
+import type { CollectionEntry } from "astro:content";
+import { formatDate } from "../../lib/date";
+import { assetUrl, withBase } from "../../lib/site";
+
+interface Props {
+  album: CollectionEntry<"gallery">;
+}
+
+const { album } = Astro.props;
+---
+
+<article class="card">
+  <img
+    class="card__media"
+    src={assetUrl(album.data.coverImage)}
+    alt={album.data.title}
+    loading="lazy"
+    width="640"
+    height="420"
+  />
+  <div class="card__body">
+    <div class="card__meta">
+      <span>Album</span>
+      <span>{formatDate(album.data.date)}</span>
+    </div>
+    <h3>{album.data.title}</h3>
+    <p>{album.data.altTextSet[0]}</p>
+    <a class="text-link" href={withBase(`/gallery/${album.data.slug}`)}>View album</a>
+  </div>
+</article>

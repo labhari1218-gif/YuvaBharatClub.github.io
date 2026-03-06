@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" role="img" aria-label="Documentation initiative placeholder">
+  <rect width="800" height="600" rx="28" fill="#F7F5EF" />
+  <rect x="160" y="94" width="470" height="394" rx="26" fill="#FFF" stroke="#013B69" stroke-width="10" />
+  <rect x="204" y="154" width="246" height="22" rx="11" fill="#013B69" opacity="0.9" />
+  <rect x="204" y="206" width="366" height="16" rx="8" fill="#CFD4DB" />
+  <rect x="204" y="248" width="342" height="16" rx="8" fill="#CFD4DB" />
+  <rect x="204" y="290" width="320" height="16" rx="8" fill="#CFD4DB" />
+  <rect x="204" y="332" width="278" height="16" rx="8" fill="#CFD4DB" />
+  <circle cx="590" cy="414" r="70" fill="#DF7813" />
+  <path d="M590 372V456" stroke="#FFF" stroke-width="16" stroke-linecap="round" />
+  <path d="M548 414H632" stroke="#FFF" stroke-width="16" stroke-linecap="round" />
+</svg>

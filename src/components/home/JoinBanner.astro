@@ -1,0 +1,18 @@
+---
+import CtaBanner from "../ui/CtaBanner.astro";
+
+interface Props {
+  joinUrl?: string;
+}
+
+const { joinUrl } = Astro.props;
+---
+
+<CtaBanner
+  title="Join Yuva Bharat Club"
+  copy="Bring your energy, ideas, and skills to a student-led team that values participation, thoughtful dialogue, and visible campus action."
+  primaryLabel={joinUrl ? "Open public form" : "How to join"}
+  primaryHref={joinUrl ?? "/join"}
+  secondaryLabel="Contact the club"
+  secondaryHref="/contact"
+/>

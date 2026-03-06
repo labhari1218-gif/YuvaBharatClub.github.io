@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-label="Yuva Bharat Club favicon">
+  <rect width="128" height="128" rx="28" fill="#F7F5EF" />
+  <path d="M32 18C54 12 76 15 96 30C82 26 66 26 48 30L48 46C66 42 83 42 98 50C79 68 58 73 36 67L36 56C52 58 67 55 81 48C67 47 55 50 42 54L32 18Z" fill="#DF7813" />
+  <path d="M30 68C47 73 64 74 84 70C73 81 58 89 42 95C31 90 24 80 30 68Z" fill="#237D3F" />
+  <circle cx="74" cy="48" r="8" fill="#F7F5EF" stroke="#013B69" stroke-width="3" />
+  <path d="M46 24L42 101" stroke="#013B69" stroke-width="5" stroke-linecap="round" />
+</svg>

@@ -1,0 +1,72 @@
+---
+import { render } from "astro:content";
+import PillarGrid from "../components/home/PillarGrid.astro";
+import CtaBanner from "../components/ui/CtaBanner.astro";
+import SectionHeading from "../components/ui/SectionHeading.astro";
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { getPageEntry, getSiteSettings } from "../lib/content";
+
+const page = await getPageEntry("about");
+const settings = await getSiteSettings();
+const { Content } = await render(page);
+---
+
+<BaseLayout
+  title={page.data.seoTitle ?? page.data.title}
+  description={page.data.seoDescription ?? page.data.description}
+>
+  <section class="page-hero">
+    <div class="container">
+      <p class="section-heading__eyebrow">About</p>
+      <h1>{page.data.title}</h1>
+      <p class="page-hero__lead">{page.data.intro}</p>
+      {page.data.optionalHindiExcerpt && <p class="hero__tagline hero__tagline--hi">{page.data.optionalHindiExcerpt}</p>}
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container page-grid">
+      <article class="prose surface">
+        <Content />
+      </article>
+
+      <aside class="sidebar-card">
+        <SectionHeading
+          eyebrow="Working areas"
+          title="How the club stays operational"
+          description="The public website summarizes the club’s functions in clear language without exposing internal coordination details."
+        />
+        <ul class="feature-list">
+          <li>Events and coordination</li>
+          <li>Dialogue and moderation</li>
+          <li>Media and outreach</li>
+          <li>Documentation and reporting</li>
+        </ul>
+      </aside>
+    </div>
+  </section>
+
+  <section class="section section--cream">
+    <div class="container">
+      <SectionHeading
+        eyebrow="Focus pillars"
+        title="A structure that keeps mission and execution aligned"
+        description="These pillars are editable in the site settings so future teams can update emphasis without rewriting the layout."
+      />
+      <PillarGrid pillars={settings.focusPillars} />
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <CtaBanner
+        title="Explore the club through its public work"
+        copy="The clearest way to understand Yuva Bharat Club is to browse its events, initiatives, and reports together."
+        primaryLabel="Explore events"
+        primaryHref="/events"
+        secondaryLabel="See how to join"
+        secondaryHref="/join"
+      />
+    </div>
+  </section>
+</BaseLayout>

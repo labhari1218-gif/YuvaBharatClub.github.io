@@ -1,0 +1,14 @@
+---
+import type { CollectionEntry } from "astro:content";
+import ReportCard from "../ui/ReportCard.astro";
+
+interface Props {
+  reports: CollectionEntry<"reports">[];
+}
+
+const { reports } = Astro.props;
+---
+
+<div class="card-grid">
+  {reports.map((report) => <ReportCard report={report} />)}
+</div>

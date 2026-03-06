@@ -1,0 +1,34 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import ReportCard from "../../components/ui/ReportCard.astro";
+import SectionHeading from "../../components/ui/SectionHeading.astro";
+import { getPublicReports } from "../../lib/content";
+
+const reports = await getPublicReports();
+---
+
+<BaseLayout
+  title="Reports | Yuva Bharat Club"
+  description="Read approved event summaries, public reports, and selected documentation that showcase the club’s work and learning."
+>
+  <section class="page-hero">
+    <div class="container">
+      <p class="section-heading__eyebrow">Reports</p>
+      <h1>Short public documentation with clean structure</h1>
+      <p class="page-hero__lead">Reports help the club publish learning and continuity without turning the site into an internal archive.</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <SectionHeading
+        eyebrow="Public documents"
+        title="Summaries, notes, and approved PDF links"
+        description="Each report page is designed to work with or without an attached PDF."
+      />
+      <div class="card-grid">
+        {reports.map((report) => <ReportCard report={report} />)}
+      </div>
+    </div>
+  </section>
+</BaseLayout>

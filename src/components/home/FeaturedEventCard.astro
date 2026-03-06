@@ -1,0 +1,34 @@
+---
+import type { CollectionEntry } from "astro:content";
+import { formatDateRange } from "../../lib/date";
+import { assetUrl, withBase } from "../../lib/site";
+import InlineLanguageLabel from "../ui/InlineLanguageLabel.astro";
+
+interface Props {
+  event: CollectionEntry<"events">;
+}
+
+const { event } = Astro.props;
+---
+
+<article class="featured-event">
+  <img src={assetUrl(event.data.coverImage)} alt={event.data.title} width="840" height="520" />
+  <div class="featured-event__content">
+    <div class="card__meta">
+      <span>{event.data.status}</span>
+      <span>{formatDateRange(event.data.startDate, event.data.endDate)}</span>
+    </div>
+    <h3>{event.data.title}</h3>
+    {event.data.titleHi && <InlineLanguageLabel label={event.data.titleHi} />}
+    <p>{event.data.summary}</p>
+    <p class="card__supporting">{event.data.venue}</p>
+    <div class="featured-event__actions">
+      <a class="button" href={withBase(`/events/${event.slug}`)}>View event</a>
+      {event.data.registrationUrl && (
+        <a class="button button--ghost" href={event.data.registrationUrl} target="_blank" rel="noreferrer">
+          Registration
+        </a>
+      )}
+    </div>
+  </div>
+</article>

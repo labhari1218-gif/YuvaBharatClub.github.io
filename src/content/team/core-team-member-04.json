@@ -1,0 +1,10 @@
+{
+  "name": "Team Representative 04",
+  "role": "Documentation Lead",
+  "workingArea": "Documentation",
+  "shortBio": "Placeholder public profile for a role that helps turn events into concise reports, summaries, and maintainable records.",
+  "photo": "/images/team/team-placeholder.svg",
+  "displayOrder": 4,
+  "isPublic": true,
+  "consentConfirmed": true
+}

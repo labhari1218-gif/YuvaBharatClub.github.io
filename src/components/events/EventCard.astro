@@ -1,0 +1,37 @@
+---
+import type { CollectionEntry } from "astro:content";
+import { formatDateRange } from "../../lib/date";
+import { assetUrl, withBase } from "../../lib/site";
+import InlineLanguageLabel from "../ui/InlineLanguageLabel.astro";
+
+interface Props {
+  event: CollectionEntry<"events">;
+}
+
+const { event } = Astro.props;
+---
+
+<article class="card event-card">
+  <img
+    class="card__media"
+    src={assetUrl(event.data.coverImage)}
+    alt={event.data.title}
+    loading="lazy"
+    width="640"
+    height="420"
+  />
+  <div class="card__body">
+    <div class="card__meta">
+      <span>{event.data.status}</span>
+      <span>{formatDateRange(event.data.startDate, event.data.endDate)}</span>
+    </div>
+    <h3>{event.data.title}</h3>
+    {event.data.titleHi && <InlineLanguageLabel label={event.data.titleHi} />}
+    <p>{event.data.summary}</p>
+    <p class="card__supporting">{event.data.venue}</p>
+    <div class="chip-row">
+      {event.data.tags.map((tag) => <span class="chip">{tag}</span>)}
+    </div>
+    <a class="text-link" href={withBase(`/events/${event.slug}`)}>View event</a>
+  </div>
+</article>

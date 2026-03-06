@@ -1,0 +1,14 @@
+---
+import type { CollectionEntry } from "astro:content";
+import GalleryAlbumCard from "../ui/GalleryAlbumCard.astro";
+
+interface Props {
+  albums: CollectionEntry<"gallery">[];
+}
+
+const { albums } = Astro.props;
+---
+
+<div class="card-grid">
+  {albums.map((album) => <GalleryAlbumCard album={album} />)}
+</div>

@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800" role="img" aria-label="Abstract Yuva Bharat Club banner">
+  <defs>
+    <linearGradient id="bg" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0%" stop-color="#FFF7EA" />
+      <stop offset="100%" stop-color="#EAF4EE" />
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="800" rx="42" fill="url(#bg)" />
+  <circle cx="1030" cy="110" r="120" fill="#013B69" opacity="0.08" />
+  <circle cx="130" cy="690" r="160" fill="#237D3F" opacity="0.1" />
+  <path d="M72 182C296 110 488 138 694 208C820 250 934 258 1128 170V272C950 350 800 352 648 318C440 274 286 274 72 356V182Z" fill="#DF7813" opacity="0.9" />
+  <path d="M72 388C274 324 486 334 682 424C844 500 984 510 1128 446V554C980 614 808 620 612 544C430 474 262 462 72 520V388Z" fill="#237D3F" opacity="0.95" />
+  <circle cx="612" cy="332" r="56" fill="#F7F5EF" stroke="#013B69" stroke-width="12" />
+  <g stroke="#013B69" stroke-width="3" opacity="0.7">
+    <path d="M612 276V388" />
+    <path d="M556 332H668" />
+    <path d="M573 293L651 371" />
+    <path d="M651 293L573 371" />
+  </g>
+</svg>

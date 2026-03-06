@@ -1,0 +1,59 @@
+---
+import { getCollection, render } from "astro:content";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import SectionHeading from "../../components/ui/SectionHeading.astro";
+import { assetUrl, withBase } from "../../lib/site";
+
+export async function getStaticPaths() {
+  const initiatives = await getCollection("initiatives");
+  return initiatives.map((initiative) => ({
+    params: { slug: initiative.slug },
+    props: { initiative }
+  }));
+}
+
+const { initiative } = Astro.props;
+const { Content } = await render(initiative);
+---
+
+<BaseLayout
+  title={`${initiative.data.title} | Yuva Bharat Club`}
+  description={initiative.data.description}
+  image={initiative.data.coverImage}
+>
+  <section class="detail-hero">
+    <div class="container detail-hero__grid">
+      <div>
+        <p class="section-heading__eyebrow">Initiative</p>
+        <h1>{initiative.data.title}</h1>
+        <p class="page-hero__lead">{initiative.data.oneLine}</p>
+        <div class="detail-meta">
+          <span>{initiative.data.focusArea}</span>
+          <span>{initiative.data.publicStatus}</span>
+        </div>
+      </div>
+      <img class="detail-hero__image" src={assetUrl(initiative.data.coverImage)} alt={initiative.data.title} width="860" height="580" />
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container page-grid">
+      <article class="prose surface">
+        <p>{initiative.data.description}</p>
+        <Content />
+      </article>
+
+      <aside class="sidebar-card">
+        <SectionHeading title="Related links" description="Internal links stay base-safe for GitHub Pages builds." />
+        <ul class="feature-list">
+          {initiative.data.links?.map((link) => (
+            <li>
+              <a href={withBase(link.href)}>{link.label}</a>
+            </li>
+          ))}
+          {!initiative.data.links?.length && <li>Links can be added here as the initiative grows.</li>}
+        </ul>
+      </aside>
+    </div>
+  </section>
+</BaseLayout>

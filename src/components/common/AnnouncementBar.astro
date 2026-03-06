@@ -1,0 +1,29 @@
+---
+import { withBase } from "../../lib/site";
+
+interface Announcement {
+  enabled: boolean;
+  text: string;
+  href?: string;
+}
+
+interface Props {
+  announcement?: Announcement;
+}
+
+const { announcement } = Astro.props;
+---
+
+{
+  announcement?.enabled && (
+    <div class="announcement-bar">
+      <div class="container announcement-bar__inner">
+        {announcement.href ? (
+          <a href={withBase(announcement.href)}>{announcement.text}</a>
+        ) : (
+          <p>{announcement.text}</p>
+        )}
+      </div>
+    </div>
+  )
+}

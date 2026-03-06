@@ -1,0 +1,55 @@
+---
+import { getCollection } from "astro:content";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import SectionHeading from "../../components/ui/SectionHeading.astro";
+import { formatDate } from "../../lib/date";
+import { getPublicEvents, getRelatedEvent } from "../../lib/content";
+import { assetUrl, withBase } from "../../lib/site";
+
+export async function getStaticPaths() {
+  const albums = await getCollection("gallery", ({ data }) => data.approvedForPublic);
+  return albums.map((album) => ({
+    params: { slug: album.data.slug },
+    props: { album }
+  }));
+}
+
+const { album } = Astro.props;
+const events = await getPublicEvents();
+const relatedEvent = getRelatedEvent(events, album.data.eventRef);
+---
+
+<BaseLayout title={`${album.data.title} | Yuva Bharat Club`} description={album.data.altTextSet[0]} image={album.data.coverImage}>
+  <section class="detail-hero">
+    <div class="container detail-hero__grid">
+      <div>
+        <p class="section-heading__eyebrow">Gallery album</p>
+        <h1>{album.data.title}</h1>
+        <p class="page-hero__lead">{album.data.altTextSet[0]}</p>
+        <div class="detail-meta">
+          <span>{formatDate(album.data.date)}</span>
+          {album.data.photographerCredit && <span>{album.data.photographerCredit}</span>}
+        </div>
+        {relatedEvent && (
+          <a class="button button--ghost" href={withBase(`/events/${relatedEvent.slug}`)}>Related event</a>
+        )}
+      </div>
+      <img class="detail-hero__image" src={assetUrl(album.data.coverImage)} alt={album.data.title} width="860" height="580" />
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <SectionHeading
+        eyebrow="Album images"
+        title="Responsive image grid"
+        description="Each image carries alt text from the content entry so the album remains accessible."
+      />
+      <div class="gallery-grid">
+        {album.data.images.map((image, index) => (
+          <img src={assetUrl(image)} alt={album.data.altTextSet[index] ?? album.data.title} width="520" height="360" loading="lazy" />
+        ))}
+      </div>
+    </div>
+  </section>
+</BaseLayout>

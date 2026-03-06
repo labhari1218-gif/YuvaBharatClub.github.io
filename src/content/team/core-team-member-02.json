@@ -1,0 +1,10 @@
+{
+  "name": "Team Representative 02",
+  "role": "Events Coordinator",
+  "workingArea": "Events",
+  "shortBio": "Placeholder public profile for a role focused on planning schedules, supporting execution, and helping activities run smoothly.",
+  "photo": "/images/team/team-placeholder.svg",
+  "displayOrder": 2,
+  "isPublic": true,
+  "consentConfirmed": true
+}

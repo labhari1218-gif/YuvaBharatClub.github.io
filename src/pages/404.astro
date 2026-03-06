@@ -1,0 +1,28 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import CtaBanner from "../components/ui/CtaBanner.astro";
+
+---
+
+<BaseLayout title="Page not found | Yuva Bharat Club" description="The page you requested does not exist." noindex={true}>
+  <section class="page-hero">
+    <div class="container">
+      <p class="section-heading__eyebrow">404</p>
+      <h1>This page is not part of the public site.</h1>
+      <p class="page-hero__lead">Use the main navigation to return to a valid route, or start again from the homepage.</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <CtaBanner
+        title="Return to the public website"
+        copy="The 404 page stays intentionally simple so visitors can recover quickly on mobile or desktop."
+        primaryLabel="Go home"
+        primaryHref="/"
+        secondaryLabel="Browse events"
+        secondaryHref="/events"
+      />
+    </div>
+  </section>
+</BaseLayout>

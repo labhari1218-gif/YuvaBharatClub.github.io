@@ -1,0 +1,20 @@
+{
+  "name": "yuva-bharat-club-site",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro"
+  },
+  "dependencies": {
+    "@fontsource/manrope": "^5.2.6",
+    "@fontsource/noto-sans-devanagari": "^5.2.6",
+    "astro": "^5.18.0"
+  },
+  "devDependencies": {
+    "typescript": "^5.9.2"
+  }
+}

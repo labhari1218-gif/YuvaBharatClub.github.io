@@ -1,0 +1,29 @@
+---
+import { isCurrentPath, navLinks, withBase } from "../../lib/site";
+
+interface Props {
+  currentPath: string;
+}
+
+const { currentPath } = Astro.props;
+---
+
+<details class="mobile-nav">
+  <summary aria-label="Open site navigation">Menu</summary>
+  <nav aria-label="Mobile">
+    <ul>
+      {
+        navLinks.map((link) => (
+          <li>
+            <a
+              href={withBase(link.href)}
+              aria-current={isCurrentPath(currentPath, link.href) ? "page" : undefined}
+            >
+              {link.label}
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+  </nav>
+</details>

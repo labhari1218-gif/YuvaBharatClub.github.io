@@ -1,0 +1,34 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import GalleryAlbumCard from "../../components/ui/GalleryAlbumCard.astro";
+import SectionHeading from "../../components/ui/SectionHeading.astro";
+import { getPublicGalleryAlbums } from "../../lib/content";
+
+const albums = await getPublicGalleryAlbums();
+---
+
+<BaseLayout
+  title="Gallery | Yuva Bharat Club"
+  description="Browse approved gallery albums that show the club’s activity through organized visual archives."
+>
+  <section class="page-hero">
+    <div class="container">
+      <p class="section-heading__eyebrow">Gallery</p>
+      <h1>Visual proof of activity, organized by album</h1>
+      <p class="page-hero__lead">This page is built for clean archives, not random asset dumping.</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <SectionHeading
+        eyebrow="Albums"
+        title="Approved public media"
+        description="Album entries keep dates, event references, and alt text grouped together so the site stays maintainable."
+      />
+      <div class="card-grid">
+        {albums.map((album) => <GalleryAlbumCard album={album} />)}
+      </div>
+    </div>
+  </section>
+</BaseLayout>

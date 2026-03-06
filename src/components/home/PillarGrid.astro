@@ -1,0 +1,21 @@
+---
+interface Pillar {
+  title: string;
+  description: string;
+}
+
+interface Props {
+  pillars: Pillar[];
+}
+
+const { pillars } = Astro.props;
+---
+
+<div class="pillar-grid">
+  {pillars.map((pillar) => (
+    <article class="pillar-card">
+      <h3>{pillar.title}</h3>
+      <p>{pillar.description}</p>
+    </article>
+  ))}
+</div>

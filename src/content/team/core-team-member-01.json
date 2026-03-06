@@ -1,0 +1,10 @@
+{
+  "name": "Team Representative 01",
+  "role": "Club Convener",
+  "workingArea": "Leadership and Coordination",
+  "shortBio": "Placeholder public profile for the student role responsible for helping coordinate club direction and activity flow.",
+  "photo": "/images/team/team-placeholder.svg",
+  "displayOrder": 1,
+  "isPublic": true,
+  "consentConfirmed": true
+}

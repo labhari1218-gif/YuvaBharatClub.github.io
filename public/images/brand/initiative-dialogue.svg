@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" role="img" aria-label="Dialogue initiative placeholder">
+  <rect width="800" height="600" rx="28" fill="#F7F5EF" />
+  <path d="M86 124C182 94 282 94 388 130C480 162 566 168 712 118V196C580 242 480 238 370 208C272 180 186 178 86 206V124Z" fill="#DF7813" />
+  <path d="M86 270C194 230 302 230 406 276C500 318 586 326 712 292V374C568 416 456 412 342 372C250 340 168 338 86 366V270Z" fill="#237D3F" />
+  <g fill="#013B69">
+    <circle cx="250" cy="446" r="58" opacity="0.18" />
+    <circle cx="400" cy="446" r="58" opacity="0.18" />
+    <circle cx="550" cy="446" r="58" opacity="0.18" />
+    <rect x="212" y="404" width="76" height="50" rx="18" />
+    <rect x="362" y="404" width="76" height="50" rx="18" />
+    <rect x="512" y="404" width="76" height="50" rx="18" />
+  </g>
+</svg>

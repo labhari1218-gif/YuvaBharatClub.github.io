@@ -1,0 +1,68 @@
+---
+import { getCollection, render } from "astro:content";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import SectionHeading from "../../components/ui/SectionHeading.astro";
+import { formatDate } from "../../lib/date";
+import { getPublicEvents, getRelatedEvent } from "../../lib/content";
+import { assetUrl, withBase } from "../../lib/site";
+
+export async function getStaticPaths() {
+  const reports = await getCollection("reports");
+  return reports.map((report) => ({
+    params: { slug: report.slug },
+    props: { report }
+  }));
+}
+
+const { report } = Astro.props;
+const { Content } = await render(report);
+const events = await getPublicEvents();
+const relatedEvent = getRelatedEvent(events, report.data.eventRef);
+---
+
+<BaseLayout title={`${report.data.title} | Yuva Bharat Club`} description={report.data.abstract} image={report.data.coverImage}>
+  <section class="detail-hero">
+    <div class="container detail-hero__grid">
+      <div>
+        <p class="section-heading__eyebrow">Report</p>
+        <h1>{report.data.title}</h1>
+        <p class="page-hero__lead">{report.data.abstract}</p>
+        <div class="detail-meta">
+          <span>{formatDate(report.data.date)}</span>
+          {relatedEvent && <span>Linked to {relatedEvent.data.title}</span>}
+        </div>
+        <div class="hero__actions">
+          {report.data.pdfUrl && (
+            <a class="button" href={assetUrl(report.data.pdfUrl)} target="_blank" rel="noreferrer">Open PDF</a>
+          )}
+          {relatedEvent && (
+            <a class="button button--ghost" href={withBase(`/events/${relatedEvent.slug}`)}>View event</a>
+          )}
+        </div>
+      </div>
+      {report.data.coverImage && (
+        <img class="detail-hero__image" src={assetUrl(report.data.coverImage)} alt={report.data.title} width="860" height="580" />
+      )}
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container page-grid">
+      <article class="prose surface">
+        <Content />
+      </article>
+
+      <aside class="sidebar-card">
+        <SectionHeading title="Tags and references" description="Use these supporting details to connect reports back to public-safe context." />
+        <ul class="feature-list">
+          {report.data.tags.map((tag) => <li>{tag}</li>)}
+          {report.data.pressLinks?.map((link) => (
+            <li>
+              <a href={link.href} target="_blank" rel="noreferrer">{link.label}</a>
+            </li>
+          ))}
+        </ul>
+      </aside>
+    </div>
+  </section>
+</BaseLayout>

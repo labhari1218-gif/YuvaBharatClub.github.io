@@ -1,0 +1,40 @@
+---
+import { assetUrl, withBase } from "../../lib/site";
+
+interface Props {
+  settings: {
+    siteDescription: string;
+    heroTaglineEn: string;
+    heroTaglineHi?: string;
+    campusName: string;
+  };
+}
+
+const { settings } = Astro.props;
+---
+
+<section class="hero">
+  <div class="container hero__grid">
+    <div class="hero__copy">
+      <p class="hero__eyebrow">Thoughtful youth action on campus</p>
+      <h1>Yuva Bharat Club</h1>
+      <p class="hero__lead">{settings.siteDescription}</p>
+      <p class="hero__tagline">{settings.heroTaglineEn}</p>
+      {settings.heroTaglineHi && <p class="hero__tagline hero__tagline--hi">{settings.heroTaglineHi}</p>}
+      <div class="hero__actions">
+        <a class="button" href={withBase("/events")}>Explore Events</a>
+        <a class="button button--ghost" href={withBase("/join")}>Join the Club</a>
+      </div>
+    </div>
+
+    <div class="hero__visual">
+      <div class="hero-card">
+        <img src={assetUrl("/images/brand/hero-ribbon.svg")} alt="Abstract banner inspired by the club logo" />
+        <div class="hero-card__badge">
+          <img src={assetUrl("/logo/ybc-logo-reference.png")} alt="Yuva Bharat Club logo" width="88" height="88" />
+          <span>{settings.campusName}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

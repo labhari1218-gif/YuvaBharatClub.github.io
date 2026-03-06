@@ -1,0 +1,34 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import SectionHeading from "../components/ui/SectionHeading.astro";
+import TeamCard from "../components/ui/TeamCard.astro";
+import { getPublicTeam } from "../lib/content";
+
+const team = await getPublicTeam();
+---
+
+<BaseLayout
+  title="Team | Yuva Bharat Club"
+  description="Meet the public-facing team roles that organize, document, design, coordinate, and support Yuva Bharat Club."
+>
+  <section class="page-hero">
+    <div class="container">
+      <p class="section-heading__eyebrow">Team</p>
+      <h1>Public-facing roles and responsibilities</h1>
+      <p class="page-hero__lead">Only approved and consented details should appear here. The seeded profiles are intentionally generic placeholders.</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <SectionHeading
+        eyebrow="Core team"
+        title="Operational roles across the club"
+        description="These cards are ordered for clarity and can later be replaced with approved names, photos, and role updates."
+      />
+      <div class="card-grid team-grid">
+        {team.map((member) => <TeamCard member={member} />)}
+      </div>
+    </div>
+  </section>
+</BaseLayout>
