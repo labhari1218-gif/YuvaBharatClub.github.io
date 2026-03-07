@@ -6,7 +6,7 @@ import SectionHeading from "../components/ui/SectionHeading.astro";
 import BaseLayout from "../layouts/BaseLayout.astro";
 import { getPageEntry, getSiteSettings } from "../lib/content";
 
-const page = await getPageEntry("about");
+const page = await getPageEntry("about-page");
 const settings = await getSiteSettings();
 const { Content } = await render(page);
 ---
