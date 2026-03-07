@@ -3,9 +3,9 @@ import { render } from "astro:content";
 import BaseLayout from "../layouts/BaseLayout.astro";
 import SectionHeading from "../components/ui/SectionHeading.astro";
 import { getPageEntry, getSiteSettings } from "../lib/content";
-import { isPublicEmail, isPublicLink } from "../lib/site";
+import { isPublicEmail, isPublicLink, withBase } from "../lib/site";
 
-const page = await getPageEntry("contact");
+const page = await getPageEntry("contact-page");
 const settings = await getSiteSettings();
 const { Content } = await render(page);
 const socials = [
@@ -35,19 +35,17 @@ const publicEmail = isPublicEmail(settings.email) ? settings.email : undefined;
       </article>
 
       <aside class="sidebar-card">
-        <SectionHeading title="Official public channels" description="Only approved contact details are shown here. Placeholder values are intentionally hidden." />
+        <SectionHeading title="Official public channels" description="Only approved contact details appear here." />
         <ul class="feature-list">
-          {publicEmail ? (
-            <li><a href={`mailto:${publicEmail}`}>{publicEmail}</a></li>
-          ) : (
-            <li>Official club email will be added once the public contact is finalized.</li>
-          )}
+          {publicEmail && <li><a href={`mailto:${publicEmail}`}>{publicEmail}</a></li>}
           {socials.map((social) => (
             <li>
               <a href={social.href} target="_blank" rel="noreferrer">{social.label}</a>
             </li>
           ))}
-          {!socials.length && <li>Public social links will appear here after approval.</li>}
+          {!publicEmail && !socials.length && <li>Official public contact details will appear here after approval.</li>}
+          <li><a href={withBase("/join")}>See how to participate</a></li>
+          <li><a href={withBase("/events")}>Browse public events</a></li>
         </ul>
       </aside>
     </div>

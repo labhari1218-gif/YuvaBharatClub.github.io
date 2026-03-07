@@ -6,7 +6,9 @@ seoTitle: Contact | Yuva Bharat Club
 seoDescription: Official public contact details for Yuva Bharat Club.
 ---
 
-This page keeps contact information minimal and public-safe. Use it for collaboration requests, event questions, or approved media follow-up. If an official email or social handle is still being finalized, the site will avoid showing placeholder contact details as if they were real.
+Yuva Bharat Club keeps its public contact simple and privacy-aware. Use this page for collaboration requests, event questions, or approved media follow-up.
+
+**संपर्क भी स्पष्ट, सार्वजनिक और जिम्मेदार हो।**
 
 ## Good reasons to reach out
 

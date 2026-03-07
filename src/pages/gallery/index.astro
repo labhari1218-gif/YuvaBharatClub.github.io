@@ -14,8 +14,8 @@ const albums = await getPublicGalleryAlbums();
   <section class="page-hero">
     <div class="container">
       <p class="section-heading__eyebrow">Gallery</p>
-      <h1>Visual proof of activity, organized by album</h1>
-      <p class="page-hero__lead">This page is built for clean archives, not random asset dumping.</p>
+      <h1>Visual snapshots from the club’s public work</h1>
+      <p class="page-hero__lead">Browse approved albums from events, preparation, and student participation on campus.</p>
     </div>
   </section>
 
@@ -24,7 +24,7 @@ const albums = await getPublicGalleryAlbums();
       <SectionHeading
         eyebrow="Albums"
         title="Approved public media"
-        description="Album entries keep dates, event references, and alt text grouped together so the site stays maintainable."
+        description="Each album keeps its images, date, and event context together for a clear public archive."
       />
       <div class="card-grid">
         {albums.map((album) => <GalleryAlbumCard album={album} />)}

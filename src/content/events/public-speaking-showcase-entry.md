@@ -20,4 +20,4 @@ public: true
 
 This showcase format highlights one of the club's clearest public roles: creating a space where students can participate actively through speaking, hosting, documenting, and supporting event flow.
 
-The seeded version intentionally stays concise. Replace it with final approved outcomes, posters, and photographs when public materials are ready.
+It reflects the club’s emphasis on confidence, expression, and visible student participation in a structured campus setting.

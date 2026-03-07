@@ -4,7 +4,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 import CtaBanner from "../components/ui/CtaBanner.astro";
 import SectionHeading from "../components/ui/SectionHeading.astro";
 import { getPageEntry, getSiteSettings } from "../lib/content";
-import { isPublicEmail, isPublicLink } from "../lib/site";
+import { isPublicEmail, isPublicLink, withBase } from "../lib/site";
 
 const page = await getPageEntry("join-page");
 const settings = await getSiteSettings();
@@ -40,11 +40,10 @@ const publicRegistrationLinks = settings.registrationLinks?.filter((link) => isP
               <a href={link.href} target="_blank" rel="noreferrer">{link.label}</a>
             </li>
           ))}
-          {publicEmail ? (
-            <li><a href={`mailto:${publicEmail}`}>{publicEmail}</a></li>
-          ) : (
-            <li>Official joining contact will be updated soon.</li>
-          )}
+          {publicEmail && <li><a href={`mailto:${publicEmail}`}>{publicEmail}</a></li>}
+          {!publicRegistrationLinks.length && !publicEmail && <li>Participation details are shared through approved public event and initiative pages.</li>}
+          <li><a href={withBase("/events")}>Browse events</a></li>
+          <li><a href={withBase("/initiatives")}>Explore initiatives</a></li>
         </ul>
       </aside>
     </div>
@@ -54,11 +53,11 @@ const publicRegistrationLinks = settings.registrationLinks?.filter((link) => isP
     <div class="container">
       <CtaBanner
         title="Take the next public step"
-        copy="If the public form is available, use it. Otherwise, explore recent activity and return once official joining details are updated."
+        copy="If an approved form is available, use it. Otherwise, explore the club’s public work and participate through upcoming events and initiatives."
         primaryLabel={publicJoinUrl ? "Open join form" : "Browse events"}
         primaryHref={publicJoinUrl ?? "/events"}
-        secondaryLabel={publicEmail ? "Email the club" : "Contact page"}
-        secondaryHref={publicEmail ? `mailto:${publicEmail}` : "/contact"}
+        secondaryLabel={publicEmail ? "Email the club" : "Explore initiatives"}
+        secondaryHref={publicEmail ? `mailto:${publicEmail}` : "/initiatives"}
       />
     </div>
   </section>

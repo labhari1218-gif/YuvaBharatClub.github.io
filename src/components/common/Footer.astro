@@ -14,6 +14,7 @@ interface Props {
 }
 
 const { footerText, siteTitle, email, socials } = Astro.props;
+const hasMeta = Boolean(email || socials.length);
 ---
 
 <footer class="site-footer">
@@ -46,18 +47,16 @@ const { footerText, siteTitle, email, socials } = Astro.props;
       </ul>
     </div>
   </div>
-  <div class="container site-footer__meta">
-    {email ? (
-      <a href={`mailto:${email}`}>{email}</a>
-    ) : (
-      <span>Official contact details will be updated soon.</span>
-    )}
-    <div class="site-footer__socials">
-      {
-        socials.map((social) => (
-          <a href={social.href} target="_blank" rel="noreferrer">{social.label}</a>
-        ))
-      }
+  {hasMeta && (
+    <div class="container site-footer__meta">
+      {email && <a href={`mailto:${email}`}>{email}</a>}
+      <div class="site-footer__socials">
+        {
+          socials.map((social) => (
+            <a href={social.href} target="_blank" rel="noreferrer">{social.label}</a>
+          ))
+        }
+      </div>
     </div>
-  </div>
+  )}
 </footer>

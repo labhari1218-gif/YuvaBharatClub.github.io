@@ -14,8 +14,8 @@ const reports = await getPublicReports();
   <section class="page-hero">
     <div class="container">
       <p class="section-heading__eyebrow">Reports</p>
-      <h1>Short public documentation with clean structure</h1>
-      <p class="page-hero__lead">Reports help the club publish learning and continuity without turning the site into an internal archive.</p>
+      <h1>Reports and summaries from public activities</h1>
+      <p class="page-hero__lead">These pages capture what was organized, discussed, or learned in a concise public format.</p>
     </div>
   </section>
 
@@ -24,7 +24,7 @@ const reports = await getPublicReports();
       <SectionHeading
         eyebrow="Public documents"
         title="Summaries, notes, and approved PDF links"
-        description="Each report page is designed to work with or without an attached PDF."
+        description="Some reports include PDFs, while others work as short written recaps."
       />
       <div class="card-grid">
         {reports.map((report) => <ReportCard report={report} />)}

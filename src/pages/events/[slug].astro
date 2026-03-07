@@ -4,7 +4,7 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
 import InlineLanguageLabel from "../../components/ui/InlineLanguageLabel.astro";
 import SectionHeading from "../../components/ui/SectionHeading.astro";
 import { formatDateRange } from "../../lib/date";
-import { assetUrl, withBase } from "../../lib/site";
+import { assetUrl, isPublicLink, withBase } from "../../lib/site";
 
 export async function getStaticPaths() {
   const events = await getCollection("events", ({ data }) => data.public);
@@ -16,6 +16,8 @@ export async function getStaticPaths() {
 
 const { event } = Astro.props;
 const { Content } = await render(event);
+const publicRegistrationUrl = isPublicLink(event.data.registrationUrl) ? event.data.registrationUrl : undefined;
+const publicReportUrl = isPublicLink(event.data.reportUrl) ? event.data.reportUrl : undefined;
 ---
 
 <BaseLayout title={`${event.data.title} | Yuva Bharat Club`} description={event.data.summary} image={event.data.coverImage}>
@@ -32,10 +34,10 @@ const { Content } = await render(event);
           <span>{event.data.venue}</span>
         </div>
         <div class="hero__actions">
-          {event.data.registrationUrl && (
-            <a class="button" href={event.data.registrationUrl} target="_blank" rel="noreferrer">Register</a>
+          {publicRegistrationUrl && (
+            <a class="button" href={publicRegistrationUrl} target="_blank" rel="noreferrer">Register</a>
           )}
-          {event.data.reportUrl && <a class="button button--ghost" href={withBase(event.data.reportUrl)}>Related report</a>}
+          {publicReportUrl && <a class="button button--ghost" href={withBase(publicReportUrl)}>Related report</a>}
         </div>
       </div>
       <img class="detail-hero__image" src={assetUrl(event.data.coverImage)} alt={event.data.title} width="860" height="580" />
@@ -49,11 +51,11 @@ const { Content } = await render(event);
       </article>
 
       <aside class="sidebar-card">
-        <SectionHeading title="Event notes" description="Use this area for practical public information rather than internal coordination detail." />
+        <SectionHeading title="Event notes" description="Key public notes, collaborators, and accessibility details appear here when available." />
         <ul class="feature-list">
           {event.data.partnerNames?.map((partner) => <li>{partner}</li>)}
           {event.data.accessibilityNotes && <li>{event.data.accessibilityNotes}</li>}
-          {!event.data.partnerNames?.length && !event.data.accessibilityNotes && <li>Final public notes can be added here when approved.</li>}
+          {!event.data.partnerNames?.length && !event.data.accessibilityNotes && <li>Additional event notes will appear here when relevant.</li>}
         </ul>
       </aside>
     </div>
@@ -65,14 +67,14 @@ const { Content } = await render(event);
         <SectionHeading
           eyebrow="Visuals"
           title="Approved supporting material"
-          description="Poster art and gallery previews should stay clean, approved, and easy to replace."
+          description="Posters and supporting visuals from the event appear here when available."
         />
         <div class="detail-visuals">
           {event.data.posterImage && (
             <img src={assetUrl(event.data.posterImage)} alt={`${event.data.title} poster`} width="420" height="560" />
           )}
-          {event.data.galleryImages?.map((image) => (
-            <img src={assetUrl(image)} alt={`${event.data.title} gallery placeholder`} width="420" height="280" />
+          {event.data.galleryImages?.map((image, index) => (
+            <img src={assetUrl(image)} alt={`Supporting visual ${index + 1} from ${event.data.title}`} width="420" height="280" />
           ))}
         </div>
       </div>

@@ -11,6 +11,6 @@ tags:
 featured: true
 ---
 
-This entry demonstrates the lighter-weight report format: a short public-facing summary that can stand on its own even when there is no attached PDF.
+This note captures the purpose of the showcase in a short format, highlighting student expression, confidence, and participation.
 
-For v1, this helps the site show a documentation rhythm without inventing archive depth that has not yet been formally prepared.
+It works as a lightweight public recap for activities that do not need a longer report or attached PDF.

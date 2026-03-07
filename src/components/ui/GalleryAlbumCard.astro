@@ -8,6 +8,9 @@ interface Props {
 }
 
 const { album } = Astro.props;
+const albumSummary = album.data.eventRef
+  ? "A curated visual snapshot connected to one of the club’s public events."
+  : "A visual snapshot of preparation, participation, and club activity on campus.";
 ---
 
 <article class="card">
@@ -25,7 +28,7 @@ const { album } = Astro.props;
       <span>{formatDate(album.data.date)}</span>
     </div>
     <h3>{album.data.title}</h3>
-    <p>{album.data.altTextSet[0]}</p>
+    <p>{albumSummary}</p>
     <a class="text-link" href={withBase(`/gallery/${album.data.slug}`)}>View album</a>
   </div>
 </article>

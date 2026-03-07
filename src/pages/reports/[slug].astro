@@ -53,7 +53,7 @@ const relatedEvent = getRelatedEvent(events, report.data.eventRef);
       </article>
 
       <aside class="sidebar-card">
-        <SectionHeading title="Tags and references" description="Use these supporting details to connect reports back to public-safe context." />
+        <SectionHeading title="Tags and references" description="Supporting details that connect this report to its event and theme." />
         <ul class="feature-list">
           {report.data.tags.map((tag) => <li>{tag}</li>)}
           {report.data.pressLinks?.map((link) => (

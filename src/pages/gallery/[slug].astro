@@ -17,15 +17,18 @@ export async function getStaticPaths() {
 const { album } = Astro.props;
 const events = await getPublicEvents();
 const relatedEvent = getRelatedEvent(events, album.data.eventRef);
+const albumLead = relatedEvent
+  ? `A visual snapshot connected to ${relatedEvent.data.title}.`
+  : "A curated album showing preparation, participation, and public activity around the club’s work.";
 ---
 
-<BaseLayout title={`${album.data.title} | Yuva Bharat Club`} description={album.data.altTextSet[0]} image={album.data.coverImage}>
+<BaseLayout title={`${album.data.title} | Yuva Bharat Club`} description={albumLead} image={album.data.coverImage}>
   <section class="detail-hero">
     <div class="container detail-hero__grid">
       <div>
         <p class="section-heading__eyebrow">Gallery album</p>
         <h1>{album.data.title}</h1>
-        <p class="page-hero__lead">{album.data.altTextSet[0]}</p>
+        <p class="page-hero__lead">{albumLead}</p>
         <div class="detail-meta">
           <span>{formatDate(album.data.date)}</span>
           {album.data.photographerCredit && <span>{album.data.photographerCredit}</span>}
@@ -42,8 +45,8 @@ const relatedEvent = getRelatedEvent(events, album.data.eventRef);
     <div class="container">
       <SectionHeading
         eyebrow="Album images"
-        title="Responsive image grid"
-        description="Each image carries alt text from the content entry so the album remains accessible."
+        title="Album images"
+        description="Each image stays grouped with its context and alt text for a clear, accessible archive."
       />
       <div class="gallery-grid">
         {album.data.images.map((image, index) => (
