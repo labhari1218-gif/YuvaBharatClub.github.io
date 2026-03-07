@@ -1,5 +1,4 @@
 ---
-import { render } from "astro:content";
 import PillarGrid from "../components/home/PillarGrid.astro";
 import CtaBanner from "../components/ui/CtaBanner.astro";
 import SectionHeading from "../components/ui/SectionHeading.astro";
@@ -8,7 +7,43 @@ import { getPageEntry, getSiteSettings } from "../lib/content";
 
 const page = await getPageEntry("about-page");
 const settings = await getSiteSettings();
-const { Content } = await render(page);
+const overviewCards = [
+  {
+    title: "What it is",
+    copy: "A student-led campus platform for dialogue, events, leadership, and meaningful participation at IISER Bhopal."
+  },
+  {
+    title: "What happens here",
+    copy: "Students contribute through discussions, event execution, documentation, outreach, and collaborative work."
+  },
+  {
+    title: "Why it matters",
+    copy: "The club creates spaces where students do more than attend. They help shape, run, and carry work forward."
+  }
+];
+
+const workingAreas = [
+  {
+    title: "Events & Coordination",
+    copy: "Planning, scheduling, and on-ground execution that turns an idea into a visible campus activity."
+  },
+  {
+    title: "Dialogue & Moderation",
+    copy: "Discussions, speaking formats, and youth-centered forums that encourage clarity and participation."
+  },
+  {
+    title: "Documentation",
+    copy: "Reports, summaries, and archives that preserve approved public learning and continuity."
+  },
+  {
+    title: "Media & Design",
+    copy: "Posters, visuals, and public-facing communication that support the club’s identity and events."
+  },
+  {
+    title: "Outreach & Participation",
+    copy: "Volunteer support, coordination, and follow-up that help more students find a meaningful place to contribute."
+  }
+];
 ---
 
 <BaseLayout
@@ -25,22 +60,29 @@ const { Content } = await render(page);
   </section>
 
   <section class="section">
-    <div class="container page-grid">
-      <article class="prose surface">
-        <Content />
+    <div class="container about-story-grid">
+      <article class="about-story surface">
+        <SectionHeading
+          eyebrow="Who we are"
+          title="Thoughtful action, not just activity"
+          description="Yuva Bharat Club is best understood as a student-led space where ideas are discussed seriously and participation is taken seriously too."
+        />
+        <p>
+          The club creates opportunities for students to contribute, collaborate, organize, and lead through
+          events, discussions, documentation, and public-facing campus activity.
+        </p>
+        <p>
+          In simple terms, the club is about thoughtful action.
+          <span class="inline-hi">सार्थक सहभागिता, स्पष्ट संवाद, और छात्र-नेतृत्व पहल।</span>
+        </p>
       </article>
 
-      <aside class="sidebar-card">
-        <SectionHeading
-          eyebrow="Working areas"
-          title="How the club stays operational"
-          description="The public website summarizes the club’s functions in clear language without exposing internal coordination details."
-        />
-        <ul class="feature-list">
-          <li>Events and coordination</li>
-          <li>Dialogue and moderation</li>
-          <li>Media and outreach</li>
-          <li>Documentation and reporting</li>
+      <aside class="sidebar-card about-story__side">
+        <p class="section-heading__eyebrow">At a glance</p>
+        <ul class="about-glance-list">
+          <li>Student-led and campus-rooted</li>
+          <li>Focused on dialogue, events, and participation</li>
+          <li>Built for students who want to contribute, not just observe</li>
         </ul>
       </aside>
     </div>
@@ -49,9 +91,45 @@ const { Content } = await render(page);
   <section class="section section--cream">
     <div class="container">
       <SectionHeading
+        eyebrow="Overview"
+        title="What people should understand at first glance"
+        description="The About page works best when it says a few clear things well instead of turning into an essay."
+      />
+      <div class="overview-grid">
+        {overviewCards.map((card) => (
+          <article class="overview-card">
+            <h3>{card.title}</h3>
+            <p>{card.copy}</p>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <SectionHeading
+        eyebrow="Working areas"
+        title="How the club stays operational"
+        description="These working areas support the full cycle of a campus activity while keeping responsibilities clear and public communication disciplined."
+      />
+      <div class="working-areas-grid">
+        {workingAreas.map((area) => (
+          <article class="working-area-card">
+            <h3>{area.title}</h3>
+            <p>{area.copy}</p>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--cream">
+    <div class="container">
+      <SectionHeading
         eyebrow="Focus pillars"
-        title="A structure that keeps mission and execution aligned"
-        description="These pillars are editable in the site settings so future teams can update emphasis without rewriting the layout."
+        title="The ideas that hold the work together"
+        description="These pillars show the balance between conversation, participation, leadership, and continuity."
       />
       <PillarGrid pillars={settings.focusPillars} />
     </div>

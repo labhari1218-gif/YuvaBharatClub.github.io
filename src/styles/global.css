@@ -461,6 +461,69 @@ main {
   max-width: 52rem;
 }
 
+.about-story-grid,
+.overview-grid,
+.working-areas-grid {
+  display: grid;
+  gap: 1.35rem;
+}
+
+.about-story-grid {
+  grid-template-columns: minmax(0, 1.35fr) minmax(280px, 0.75fr);
+  align-items: start;
+}
+
+.about-story,
+.overview-card,
+.working-area-card {
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  background: var(--surface);
+  box-shadow: var(--shadow);
+}
+
+.about-story,
+.overview-card,
+.working-area-card,
+.about-story__side {
+  padding: 1.7rem;
+}
+
+.about-story p:last-child {
+  margin-bottom: 0;
+}
+
+.inline-hi {
+  display: inline-block;
+  margin-left: 0.45rem;
+  font-family: "Noto Sans Devanagari", sans-serif;
+  color: var(--text);
+  font-weight: 700;
+}
+
+.about-glance-list {
+  display: grid;
+  gap: 0.8rem;
+  margin: 0;
+}
+
+.about-glance-list li {
+  color: var(--text);
+}
+
+.overview-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.overview-card h3,
+.working-area-card h3 {
+  margin-bottom: 0.85rem;
+}
+
+.working-areas-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
 .team-grid {
   grid-template-columns: repeat(3, minmax(0, 1fr));
 }
@@ -646,7 +709,9 @@ main {
   }
 
   .card-grid,
-  .team-grid {
+  .team-grid,
+  .overview-grid,
+  .working-areas-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
@@ -662,6 +727,7 @@ main {
 
   .hero__grid,
   .detail-hero__grid,
+  .about-story-grid,
   .site-footer__grid {
     grid-template-columns: 1fr;
   }
@@ -699,7 +765,9 @@ main {
   .quick-values__grid,
   .card-grid,
   .team-grid,
-  .gallery-preview__grid {
+  .gallery-preview__grid,
+  .overview-grid,
+  .working-areas-grid {
     grid-template-columns: 1fr;
   }
 
