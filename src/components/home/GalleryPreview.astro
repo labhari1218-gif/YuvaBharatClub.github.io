@@ -1,14 +1,27 @@
 ---
 import type { CollectionEntry } from "astro:content";
-import GalleryAlbumCard from "../ui/GalleryAlbumCard.astro";
+import { assetUrl, withBase } from "../../lib/site";
 
 interface Props {
   albums: CollectionEntry<"gallery">[];
 }
 
 const { albums } = Astro.props;
+const previewImages = albums
+  .flatMap((album) =>
+    album.data.images.slice(0, 2).map((image, index) => ({
+      src: image,
+      alt: album.data.altTextSet[index] ?? album.data.title
+    }))
+  )
+  .slice(0, 4);
 ---
 
-<div class="card-grid">
-  {albums.map((album) => <GalleryAlbumCard album={album} />)}
+<div class="gallery-preview">
+  <div class="gallery-preview__grid">
+    {previewImages.map((image) => <img src={assetUrl(image.src)} alt={image.alt} loading="lazy" width="420" height="300" />)}
+  </div>
+  <div class="gallery-preview__actions">
+    <a class="text-link" href={withBase("/gallery")}>View gallery</a>
+  </div>
 </div>

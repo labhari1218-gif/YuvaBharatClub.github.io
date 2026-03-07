@@ -1,39 +1,26 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
-import FeaturedEventCard from "../components/home/FeaturedEventCard.astro";
 import GalleryPreview from "../components/home/GalleryPreview.astro";
 import Hero from "../components/home/Hero.astro";
 import HighlightsGrid from "../components/home/HighlightsGrid.astro";
 import JoinBanner from "../components/home/JoinBanner.astro";
-import PillarGrid from "../components/home/PillarGrid.astro";
 import QuickValueStrip from "../components/home/QuickValueStrip.astro";
-import ReportPreviewGrid from "../components/home/ReportPreviewGrid.astro";
-import TeamPreview from "../components/home/TeamPreview.astro";
 import SectionHeading from "../components/ui/SectionHeading.astro";
+import InitiativeCard from "../components/ui/InitiativeCard.astro";
 import {
-  findBySlug,
   getPublicEvents,
   getPublicGalleryAlbums,
-  getPublicReports,
-  getPublicTeam,
+  getPublicInitiatives,
   getSiteSettings,
   pickFeatured
 } from "../lib/content";
 
 const settings = await getSiteSettings();
 const events = await getPublicEvents();
-const reports = await getPublicReports();
+const initiatives = (await getPublicInitiatives()).slice(0, 3);
 const galleryAlbums = await getPublicGalleryAlbums();
-const team = await getPublicTeam();
-
-const featuredEvent =
-  findBySlug(events, settings.homepage.featuredEventSlug) ?? events[0];
-const recentHighlights = events
-  .filter((event) => event.slug !== featuredEvent?.slug)
-  .slice(0, 2);
-const featuredReports = pickFeatured(reports, settings.homepage.featuredReportSlugs);
+const featuredEvents = events.slice(0, 3);
 const featuredAlbums = pickFeatured(galleryAlbums, settings.homepage.featuredGallerySlugs);
-const featuredTeam = team.slice(0, 3);
 ---
 
 <BaseLayout title="Yuva Bharat Club" description={settings.siteDescription}>
@@ -43,37 +30,42 @@ const featuredTeam = team.slice(0, 3);
   <section class="section">
     <div class="container">
       <SectionHeading
-        eyebrow="Focus pillars"
-        title="Built around participation, dialogue, and continuity"
-        description="The club works best when it balances ideas with execution, and public communication with careful documentation."
+        eyebrow="About snapshot"
+        title="A student-led platform for ideas, participation, and youth action"
+        description="Yuva Bharat Club creates meaningful opportunities for students to participate, lead, collaborate, and contribute through events, discussions, initiatives, and community-oriented activities at IISER Bhopal."
       />
-      <PillarGrid pillars={settings.focusPillars} />
+      <div class="about-snapshot surface">
+        <p>
+          The public site stays deliberately simple: it explains what the club is, shows event-backed proof of activity,
+          and gives students a clear path to participate without exposing internal coordination or unnecessary detail.
+        </p>
+      </div>
     </div>
   </section>
-
-  {featuredEvent && (
-    <section class="section">
-      <div class="container">
-        <SectionHeading
-          eyebrow="Featured event"
-          title="A current entry point into campus activity"
-          description="The homepage prioritizes one visible event so first-time visitors can understand what the club actually does."
-          actionLabel="All events"
-          actionHref="/events"
-        />
-        <FeaturedEventCard event={featuredEvent} />
-      </div>
-    </section>
-  )}
 
   <section class="section">
     <div class="container">
       <SectionHeading
-        eyebrow="Past highlights"
-        title="Recent event snapshots"
-        description="Public-safe summaries and placeholder visuals are seeded here until final approved photos and notes are available."
+        eyebrow="Featured events"
+        title="Recent and flagship public activity"
+        description="A smaller set of event cards is enough to show the club’s work without turning the homepage into an archive."
+        actionLabel="All events"
+        actionHref="/events"
       />
-      <HighlightsGrid events={recentHighlights} />
+      <HighlightsGrid events={featuredEvents} />
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <SectionHeading
+        eyebrow="Focus areas"
+        title="Three clear ways the club shows up on campus"
+        description="The homepage keeps this section tight so visitors understand the club’s core work at a glance."
+      />
+      <div class="card-grid">
+        {initiatives.map((initiative) => <InitiativeCard initiative={initiative} />)}
+      </div>
     </div>
   </section>
 
@@ -81,38 +73,10 @@ const featuredTeam = team.slice(0, 3);
     <div class="container">
       <SectionHeading
         eyebrow="Gallery"
-        title="Approved visual archives"
-        description="Albums keep the site organized and future-student-friendly instead of dumping loose media into a single page."
-        actionLabel="View gallery"
-        actionHref="/gallery"
+        title="A lighter visual preview"
+        description="A small image preview is enough on the homepage. The full album structure stays on the gallery page."
       />
       <GalleryPreview albums={featuredAlbums} />
-    </div>
-  </section>
-
-  <section class="section">
-    <div class="container">
-      <SectionHeading
-        eyebrow="Reports"
-        title="Documentation that future teams can build on"
-        description="Short reports and event summaries help the club publish a public record without exposing private coordination."
-        actionLabel="Read reports"
-        actionHref="/reports"
-      />
-      <ReportPreviewGrid reports={featuredReports} />
-    </div>
-  </section>
-
-  <section class="section">
-    <div class="container">
-      <SectionHeading
-        eyebrow="Team preview"
-        title="Public-facing roles that keep the work moving"
-        description="Profiles stay minimal on purpose and should only include approved, consented details."
-        actionLabel="Meet the team"
-        actionHref="/team"
-      />
-      <TeamPreview members={featuredTeam} />
     </div>
   </section>
 

@@ -41,6 +41,22 @@ body {
   min-height: 100vh;
 }
 
+.skip-link {
+  position: absolute;
+  left: 1rem;
+  top: -4rem;
+  z-index: 40;
+  padding: 0.85rem 1rem;
+  border-radius: 999px;
+  background: var(--color-navy);
+  color: #fff;
+  font-weight: 700;
+}
+
+.skip-link:focus {
+  top: 1rem;
+}
+
 img {
   display: block;
   max-width: 100%;
@@ -122,22 +138,6 @@ main {
   background: linear-gradient(180deg, rgba(247, 245, 239, 0.72), rgba(255, 255, 255, 0.55));
   border-top: 1px solid rgba(1, 59, 105, 0.06);
   border-bottom: 1px solid rgba(1, 59, 105, 0.06);
-}
-
-.announcement-bar {
-  background: var(--color-navy);
-  color: #fff;
-  font-size: 0.95rem;
-}
-
-.announcement-bar__inner {
-  padding: 0.8rem 0;
-}
-
-.announcement-bar p,
-.announcement-bar a {
-  color: #fff;
-  margin: 0;
 }
 
 .site-header {
@@ -360,7 +360,7 @@ main {
 }
 
 .quick-values__grid {
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: repeat(4, minmax(0, 1fr));
 }
 
 .quick-values article,
@@ -418,6 +418,11 @@ main {
 
 .card-grid {
   grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.about-snapshot {
+  padding: 1.7rem;
+  max-width: 52rem;
 }
 
 .team-grid {
@@ -517,6 +522,30 @@ main {
   grid-template-columns: repeat(3, minmax(0, 1fr));
 }
 
+.gallery-preview {
+  display: grid;
+  gap: 1rem;
+}
+
+.gallery-preview__grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.gallery-preview__grid img {
+  aspect-ratio: 4 / 3;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow);
+  object-fit: cover;
+}
+
+.gallery-preview__actions {
+  display: flex;
+  justify-content: flex-end;
+}
+
 .detail-visuals img,
 .gallery-grid img {
   border-radius: var(--radius-md);
@@ -540,7 +569,7 @@ main {
 }
 
 .site-footer__grid {
-  grid-template-columns: minmax(0, 1.3fr) repeat(2, minmax(0, 0.7fr));
+  grid-template-columns: minmax(0, 1.3fr) repeat(2, minmax(0, 0.65fr));
   align-items: start;
 }
 
@@ -554,6 +583,20 @@ main {
 .footer-list {
   display: grid;
   gap: 0.55rem;
+}
+
+.site-footer__meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding-top: 1.5rem;
+}
+
+.site-footer__socials {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
 }
 
 .empty-state {
@@ -579,6 +622,7 @@ main {
   .page-grid,
   .detail-visuals,
   .gallery-grid,
+  .gallery-preview__grid,
   .site-footer__grid,
   .cta-banner {
     grid-template-columns: 1fr;
@@ -589,8 +633,10 @@ main {
   }
 
   .cta-banner,
-  .section-heading {
+  .section-heading,
+  .site-footer__meta {
     align-items: start;
+    justify-content: start;
   }
 }
 

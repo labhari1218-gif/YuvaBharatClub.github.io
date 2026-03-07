@@ -3,11 +3,8 @@ export const navLinks = [
   { label: "About", href: "/about" },
   { label: "Events", href: "/events" },
   { label: "Initiatives", href: "/initiatives" },
-  { label: "Gallery", href: "/gallery" },
-  { label: "Reports", href: "/reports" },
   { label: "Team", href: "/team" },
-  { label: "Join", href: "/join" },
-  { label: "Contact", href: "/contact" }
+  { label: "Join", href: "/join" }
 ] as const;
 
 const isExternal = (value: string) =>

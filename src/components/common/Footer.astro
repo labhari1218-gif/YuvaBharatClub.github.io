@@ -27,27 +27,33 @@ const { footerText, siteTitle, email, socials } = Astro.props;
     </div>
 
     <div>
-      <h3>Navigate</h3>
+      <h3>Explore</h3>
       <ul class="footer-list">
         <li><a href={withBase("/about")}>About</a></li>
         <li><a href={withBase("/events")}>Events</a></li>
-        <li><a href={withBase("/reports")}>Reports</a></li>
-        <li><a href={withBase("/join")}>Join</a></li>
+        <li><a href={withBase("/initiatives")}>Initiatives</a></li>
+        <li><a href={withBase("/team")}>Team</a></li>
       </ul>
     </div>
 
     <div>
-      <h3>Contact</h3>
+      <h3>More</h3>
       <ul class="footer-list">
-        <li><a href={`mailto:${email}`}>{email}</a></li>
-        {
-          socials.map((social) => (
-            <li>
-              <a href={social.href} target="_blank" rel="noreferrer">{social.label}</a>
-            </li>
-          ))
-        }
+        <li><a href={withBase("/gallery")}>Gallery</a></li>
+        <li><a href={withBase("/reports")}>Reports</a></li>
+        <li><a href={withBase("/join")}>Join</a></li>
+        <li><a href={withBase("/contact")}>Contact</a></li>
       </ul>
+    </div>
+  </div>
+  <div class="container site-footer__meta">
+    <a href={`mailto:${email}`}>{email}</a>
+    <div class="site-footer__socials">
+      {
+        socials.map((social) => (
+          <a href={social.href} target="_blank" rel="noreferrer">{social.label}</a>
+        ))
+      }
     </div>
   </div>
 </footer>

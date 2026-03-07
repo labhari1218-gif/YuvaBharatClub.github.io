@@ -1,5 +1,4 @@
 ---
-import AnnouncementBar from "../components/common/AnnouncementBar.astro";
 import Footer from "../components/common/Footer.astro";
 import Header from "../components/common/Header.astro";
 import SeoHead from "../components/common/SeoHead.astro";
@@ -29,9 +28,9 @@ const socials = [
     <SeoHead title={title} description={description} image={image ?? settings.seoImage} noindex={noindex} />
   </head>
   <body>
-    <AnnouncementBar announcement={settings.announcementBar} />
+    <a class="skip-link" href="#main-content">Skip to content</a>
     <Header currentPath={Astro.url.pathname} siteTitle={settings.siteTitle} shortTitle={settings.shortTitle} />
-    <main>
+    <main id="main-content">
       <slot />
     </main>
     <Footer
