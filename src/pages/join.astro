@@ -4,10 +4,14 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 import CtaBanner from "../components/ui/CtaBanner.astro";
 import SectionHeading from "../components/ui/SectionHeading.astro";
 import { getPageEntry, getSiteSettings } from "../lib/content";
+import { isPublicEmail, isPublicLink } from "../lib/site";
 
 const page = await getPageEntry("join");
 const settings = await getSiteSettings();
 const { Content } = await render(page);
+const publicEmail = isPublicEmail(settings.email) ? settings.email : undefined;
+const publicJoinUrl = isPublicLink(settings.joinUrl) ? settings.joinUrl : undefined;
+const publicRegistrationLinks = settings.registrationLinks?.filter((link) => isPublicLink(link.href)) ?? [];
 ---
 
 <BaseLayout
@@ -29,14 +33,18 @@ const { Content } = await render(page);
       </article>
 
       <aside class="sidebar-card">
-        <SectionHeading title="Public pathways" description="Use approved public links only. If the form is not ready, email remains the fallback." />
+        <SectionHeading title="Public pathways" description="Only approved forms and official contact channels are shown here." />
         <ul class="feature-list">
-          {settings.registrationLinks?.map((link) => (
+          {publicRegistrationLinks.map((link) => (
             <li>
               <a href={link.href} target="_blank" rel="noreferrer">{link.label}</a>
             </li>
           ))}
-          <li><a href={`mailto:${settings.email}`}>{settings.email}</a></li>
+          {publicEmail ? (
+            <li><a href={`mailto:${publicEmail}`}>{publicEmail}</a></li>
+          ) : (
+            <li>Official joining contact will be updated soon.</li>
+          )}
         </ul>
       </aside>
     </div>
@@ -46,11 +54,11 @@ const { Content } = await render(page);
     <div class="container">
       <CtaBanner
         title="Take the next public step"
-        copy="The website stays privacy-safe by routing participation through approved public forms and the official club email."
-        primaryLabel={settings.joinUrl ? "Open join form" : "Email the club"}
-        primaryHref={settings.joinUrl ?? `mailto:${settings.email}`}
-        secondaryLabel="Browse events"
-        secondaryHref="/events"
+        copy="If the public form is available, use it. Otherwise, explore recent activity and return once official joining details are updated."
+        primaryLabel={publicJoinUrl ? "Open join form" : "Browse events"}
+        primaryHref={publicJoinUrl ?? "/events"}
+        secondaryLabel={publicEmail ? "Email the club" : "Contact page"}
+        secondaryHref={publicEmail ? `mailto:${publicEmail}` : "/contact"}
       />
     </div>
   </section>

@@ -9,7 +9,7 @@ interface SocialLink {
 interface Props {
   footerText: string;
   siteTitle: string;
-  email: string;
+  email?: string;
   socials: SocialLink[];
 }
 
@@ -47,7 +47,11 @@ const { footerText, siteTitle, email, socials } = Astro.props;
     </div>
   </div>
   <div class="container site-footer__meta">
-    <a href={`mailto:${email}`}>{email}</a>
+    {email ? (
+      <a href={`mailto:${email}`}>{email}</a>
+    ) : (
+      <span>Official contact details will be updated soon.</span>
+    )}
     <div class="site-footer__socials">
       {
         socials.map((social) => (

@@ -47,3 +47,21 @@ export const toAbsoluteUrl = (path: string, site?: URL) => {
   const origin = site ?? new URL("https://example.github.io");
   return new URL(assetUrl(path), origin).toString();
 };
+
+export const isPlaceholderValue = (value?: string) => {
+  if (!value) return true;
+  const normalized = value.trim().toLowerCase();
+  return (
+    !normalized ||
+    normalized.includes("example.com") ||
+    normalized.includes(".example") ||
+    normalized.includes("replace-with")
+  );
+};
+
+export const isPublicLink = (value?: string) => !!value && !isPlaceholderValue(value);
+
+export const isPublicEmail = (value?: string) =>
+  !!value &&
+  !isPlaceholderValue(value) &&
+  /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);

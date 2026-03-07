@@ -1,6 +1,5 @@
 ---
 title: Join Yuva Bharat Club
-slug: join
 description: Volunteer, coordinate, design, document, and help shape youth-led campus action through Yuva Bharat Club.
 intro: Want to contribute, volunteer, design, document, organize, or help run events? Bring your energy, ideas, and skills to the team.
 seoTitle: Join | Yuva Bharat Club

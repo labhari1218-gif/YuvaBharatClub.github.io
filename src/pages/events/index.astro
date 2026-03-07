@@ -17,8 +17,12 @@ const past = events.filter((event) => event.data.status !== "upcoming");
   <section class="page-hero">
     <div class="container">
       <p class="section-heading__eyebrow">Events</p>
-      <h1>Upcoming and past campus activity</h1>
-      <p class="page-hero__lead">Explore event pages built for clear public summaries, approved media, and simple next steps.</p>
+      <h1>Events, dialogue, and campus participation</h1>
+      <p class="page-hero__lead">
+        This page brings together upcoming programs and selected past highlights so visitors can quickly understand
+        what Yuva Bharat Club actually does on campus.
+      </p>
+      <p class="hero__tagline hero__tagline--hi">कार्यक्रम, संवाद और सार्थक भागीदारी।</p>
     </div>
   </section>
 
@@ -26,13 +30,13 @@ const past = events.filter((event) => event.data.status !== "upcoming");
     <div class="container">
       <SectionHeading
         eyebrow="Upcoming"
-        title="What’s next"
-        description="Public registration links and final venue notes should always be confirmed before publishing."
+        title="What’s coming next"
+        description="Upcoming entries highlight where students can attend, participate, or volunteer. Final venue details and registration links should always be approved before publication."
       />
       {upcoming.length ? (
         <div class="card-grid">{upcoming.map((event) => <EventCard event={event} />)}</div>
       ) : (
-        <EmptyState title="No upcoming events yet" copy="Add the next approved event entry to the content collection to populate this section." />
+        <EmptyState title="No upcoming events are listed yet" copy="The next approved public event will appear here once scheduling details are ready." />
       )}
     </div>
   </section>
@@ -40,14 +44,14 @@ const past = events.filter((event) => event.data.status !== "upcoming");
   <section class="section section--cream">
     <div class="container">
       <SectionHeading
-        eyebrow="Archive"
-        title="Past event summaries"
-        description="These pages show how the club can preserve a public record without overloading the website."
+        eyebrow="Highlights"
+        title="Recent public event pages"
+        description="Past entries act as a clean public record. They show the club’s activity through concise summaries, approved visuals, and clear event context."
       />
       {past.length ? (
         <div class="card-grid">{past.map((event) => <EventCard event={event} />)}</div>
       ) : (
-        <EmptyState title="No past events yet" copy="Approved event summaries will appear here once content has been added." />
+        <EmptyState title="No past event pages yet" copy="Approved event summaries and highlights will appear here as the public archive grows." />
       )}
     </div>
   </section>

@@ -3,15 +3,17 @@ import { render } from "astro:content";
 import BaseLayout from "../layouts/BaseLayout.astro";
 import SectionHeading from "../components/ui/SectionHeading.astro";
 import { getPageEntry, getSiteSettings } from "../lib/content";
+import { isPublicEmail, isPublicLink } from "../lib/site";
 
 const page = await getPageEntry("contact");
 const settings = await getSiteSettings();
 const { Content } = await render(page);
 const socials = [
-  settings.instagramUrl ? { label: "Instagram", href: settings.instagramUrl } : undefined,
-  settings.linkedinUrl ? { label: "LinkedIn", href: settings.linkedinUrl } : undefined,
-  settings.youtubeUrl ? { label: "YouTube", href: settings.youtubeUrl } : undefined
+  isPublicLink(settings.instagramUrl) ? { label: "Instagram", href: settings.instagramUrl } : undefined,
+  isPublicLink(settings.linkedinUrl) ? { label: "LinkedIn", href: settings.linkedinUrl } : undefined,
+  isPublicLink(settings.youtubeUrl) ? { label: "YouTube", href: settings.youtubeUrl } : undefined
 ].filter(Boolean) as { label: string; href: string }[];
+const publicEmail = isPublicEmail(settings.email) ? settings.email : undefined;
 ---
 
 <BaseLayout
@@ -33,14 +35,19 @@ const socials = [
       </article>
 
       <aside class="sidebar-card">
-        <SectionHeading title="Official public channels" description="Replace the placeholder links here once the final approved handles are available." />
+        <SectionHeading title="Official public channels" description="Only approved contact details are shown here. Placeholder values are intentionally hidden." />
         <ul class="feature-list">
-          <li><a href={`mailto:${settings.email}`}>{settings.email}</a></li>
+          {publicEmail ? (
+            <li><a href={`mailto:${publicEmail}`}>{publicEmail}</a></li>
+          ) : (
+            <li>Official club email will be added once the public contact is finalized.</li>
+          )}
           {socials.map((social) => (
             <li>
               <a href={social.href} target="_blank" rel="noreferrer">{social.label}</a>
             </li>
           ))}
+          {!socials.length && <li>Public social links will appear here after approval.</li>}
         </ul>
       </aside>
     </div>

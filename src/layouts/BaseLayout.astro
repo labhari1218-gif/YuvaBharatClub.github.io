@@ -4,6 +4,7 @@ import Header from "../components/common/Header.astro";
 import SeoHead from "../components/common/SeoHead.astro";
 import "../styles/global.css";
 import { getSiteSettings } from "../lib/content";
+import { isPublicEmail, isPublicLink } from "../lib/site";
 
 interface Props {
   title: string;
@@ -15,11 +16,12 @@ interface Props {
 const { title, description, image, noindex = false } = Astro.props;
 const settings = await getSiteSettings();
 const socials = [
-  settings.instagramUrl ? { label: "Instagram", href: settings.instagramUrl } : undefined,
-  settings.linkedinUrl ? { label: "LinkedIn", href: settings.linkedinUrl } : undefined,
-  settings.youtubeUrl ? { label: "YouTube", href: settings.youtubeUrl } : undefined,
-  settings.githubUrl ? { label: "GitHub", href: settings.githubUrl } : undefined
+  isPublicLink(settings.instagramUrl) ? { label: "Instagram", href: settings.instagramUrl } : undefined,
+  isPublicLink(settings.linkedinUrl) ? { label: "LinkedIn", href: settings.linkedinUrl } : undefined,
+  isPublicLink(settings.youtubeUrl) ? { label: "YouTube", href: settings.youtubeUrl } : undefined,
+  isPublicLink(settings.githubUrl) ? { label: "GitHub", href: settings.githubUrl } : undefined
 ].filter(Boolean) as { label: string; href: string }[];
+const publicEmail = isPublicEmail(settings.email) ? settings.email : undefined;
 ---
 
 <!doctype html>
@@ -36,7 +38,7 @@ const socials = [
     <Footer
       footerText={settings.footerText}
       siteTitle={settings.siteTitle}
-      email={settings.email}
+      email={publicEmail}
       socials={socials}
     />
   </body>
