@@ -6,7 +6,7 @@ import SectionHeading from "../components/ui/SectionHeading.astro";
 import { getPageEntry, getSiteSettings } from "../lib/content";
 import { isPublicEmail, isPublicLink } from "../lib/site";
 
-const page = await getPageEntry("join");
+const page = await getPageEntry("join-page");
 const settings = await getSiteSettings();
 const { Content } = await render(page);
 const publicEmail = isPublicEmail(settings.email) ? settings.email : undefined;

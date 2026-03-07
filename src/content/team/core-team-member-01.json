@@ -1,8 +1,8 @@
 {
-  "name": "Team Representative 01",
-  "role": "Club Convener",
+  "name": "Club Convener",
+  "role": "Student lead for coordination and direction",
   "workingArea": "Leadership and Coordination",
-  "shortBio": "Placeholder public profile for the student role responsible for helping coordinate club direction and activity flow.",
+  "shortBio": "Helps coordinate overall club direction, activity flow, and public-facing clarity across initiatives and events.",
   "photo": "/images/team/team-placeholder.svg",
   "displayOrder": 1,
   "isPublic": true,

@@ -1,8 +1,8 @@
 {
-  "name": "Team Representative 04",
-  "role": "Documentation Lead",
+  "name": "Documentation Lead",
+  "role": "Student lead for reports and archives",
   "workingArea": "Documentation",
-  "shortBio": "Placeholder public profile for a role that helps turn events into concise reports, summaries, and maintainable records.",
+  "shortBio": "Turns activities into clear summaries, reports, and archives that future student teams can build on.",
   "photo": "/images/team/team-placeholder.svg",
   "displayOrder": 4,
   "isPublic": true,

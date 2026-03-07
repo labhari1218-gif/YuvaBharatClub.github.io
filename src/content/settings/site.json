@@ -1,29 +1,17 @@
 {
   "siteTitle": "Yuva Bharat Club",
   "shortTitle": "YBC",
-  "siteDescription": "Student-led initiatives, dialogue, and campus action at IISER Bhopal.",
+  "siteDescription": "A student-led platform for youth leadership, dialogue, events, and campus participation at IISER Bhopal.",
   "campusName": "IISER Bhopal",
-  "email": "contact@yuva-bharat-club.example",
-  "instagramUrl": "https://example.com/replace-with-official-instagram",
-  "linkedinUrl": "https://example.com/replace-with-official-linkedin",
+  "email": "",
   "heroTaglineEn": "Build ideas. Lead events. Participate with purpose.",
   "heroTaglineHi": "युवा ऊर्जा, संवाद और सार्थक सहभागिता का मंच।",
-  "footerText": "A student-led platform at IISER Bhopal for youth leadership, campus participation, events, dialogue, and community-driven action.",
+  "footerText": "Student-led dialogue, events, and meaningful campus participation at IISER Bhopal.",
   "seoImage": "/logo/ybc-logo-reference.png",
   "defaultLocale": "en",
   "supportedLocales": [
     "en",
     "hi"
-  ],
-  "announcementBar": {
-    "enabled": true,
-    "text": "This v1 site uses privacy-safe placeholder media where final approved assets are still being prepared."
-  },
-  "registrationLinks": [
-    {
-      "label": "Volunteer interest form",
-      "href": "https://example.com/replace-with-join-form"
-    }
   ],
   "focusPillars": [
     {
@@ -44,7 +32,6 @@
     }
   ],
   "homepage": {
-    "featuredEventSlug": "campus-dialogue-series-april-2026",
     "featuredReportSlugs": [
       "national-youth-day-summary-2026",
       "public-speaking-showcase-note"

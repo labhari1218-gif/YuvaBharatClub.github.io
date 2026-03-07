@@ -14,8 +14,12 @@ const team = await getPublicTeam();
   <section class="page-hero">
     <div class="container">
       <p class="section-heading__eyebrow">Team</p>
-      <h1>Public-facing roles and responsibilities</h1>
-      <p class="page-hero__lead">Only approved and consented details should appear here. The seeded profiles are intentionally generic placeholders.</p>
+      <h1>Core roles that keep the club moving</h1>
+      <p class="page-hero__lead">
+        This page highlights public-facing responsibilities across the club. Until final approved names are ready,
+        roles are shown in a clean role-first format.
+      </p>
+      <p class="hero__tagline hero__tagline--hi">भूमिकाएँ स्पष्ट हों, तभी काम बेहतर चलता है।</p>
     </div>
   </section>
 
@@ -23,8 +27,8 @@ const team = await getPublicTeam();
     <div class="container">
       <SectionHeading
         eyebrow="Core team"
-        title="Operational roles across the club"
-        description="These cards are ordered for clarity and can later be replaced with approved names, photos, and role updates."
+        title="Operational responsibilities across the club"
+        description="These entries are ordered for clarity and can later be replaced or expanded when approved public names and profiles are available."
       />
       <div class="card-grid team-grid">
         {team.map((member) => <TeamCard member={member} />)}

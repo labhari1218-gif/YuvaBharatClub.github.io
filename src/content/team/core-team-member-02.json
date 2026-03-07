@@ -1,8 +1,8 @@
 {
-  "name": "Team Representative 02",
-  "role": "Events Coordinator",
+  "name": "Events Coordinator",
+  "role": "Student lead for planning and execution",
   "workingArea": "Events",
-  "shortBio": "Placeholder public profile for a role focused on planning schedules, supporting execution, and helping activities run smoothly.",
+  "shortBio": "Supports scheduling, logistics, and on-ground execution so public programs run clearly and on time.",
   "photo": "/images/team/team-placeholder.svg",
   "displayOrder": 2,
   "isPublic": true,
