@@ -18,8 +18,8 @@ const { album } = Astro.props;
 const events = await getPublicEvents();
 const relatedEvent = getRelatedEvent(events, album.data.eventRef);
 const albumLead = relatedEvent
-  ? `A visual snapshot connected to ${relatedEvent.data.title}.`
-  : "A curated album showing preparation, participation, and public activity around the club’s work.";
+  ? `Images from ${relatedEvent.data.title} and the activity around it.`
+  : "A visual look at preparation, participation, and club activity on campus.";
 ---
 
 <BaseLayout title={`${album.data.title} | Yuva Bharat Club`} description={albumLead} image={album.data.coverImage}>
@@ -34,7 +34,7 @@ const albumLead = relatedEvent
           {album.data.photographerCredit && <span>{album.data.photographerCredit}</span>}
         </div>
         {relatedEvent && (
-          <a class="button button--ghost" href={withBase(`/events/${relatedEvent.slug}`)}>Related event</a>
+          <a class="button button--ghost" href={withBase(`/events/${relatedEvent.data.slug}`)}>View event</a>
         )}
       </div>
       <img class="detail-hero__image" src={assetUrl(album.data.coverImage)} alt={album.data.title} width="860" height="580" />
@@ -45,8 +45,8 @@ const albumLead = relatedEvent
     <div class="container">
       <SectionHeading
         eyebrow="Album images"
-        title="Album images"
-        description="Each image stays grouped with its context and alt text for a clear, accessible archive."
+        title="Inside the album"
+        description="A visual record of the event or activity, collected in one place."
       />
       <div class="gallery-grid">
         {album.data.images.map((image, index) => (

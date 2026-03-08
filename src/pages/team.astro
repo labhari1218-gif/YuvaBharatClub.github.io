@@ -9,15 +9,15 @@ const team = await getPublicTeam();
 
 <BaseLayout
   title="Team | Yuva Bharat Club"
-  description="Meet the public-facing team roles that organize, document, design, coordinate, and support Yuva Bharat Club."
+  description="Meet the team roles that organize, document, design, coordinate, and support Yuva Bharat Club."
 >
   <section class="page-hero">
     <div class="container">
       <p class="section-heading__eyebrow">Team</p>
-      <h1>Core roles that keep the club moving</h1>
+      <h1>Team roles that keep the club moving</h1>
       <p class="page-hero__lead">
-        This page highlights public-facing responsibilities across the club. Until final approved names are ready,
-        roles are shown in a clean role-first format.
+        This page highlights the roles that help the club plan events, support participation,
+        and keep its work organized.
       </p>
       <p class="hero__tagline hero__tagline--hi">भूमिकाएँ स्पष्ट हों, तभी काम बेहतर चलता है।</p>
     </div>
@@ -26,9 +26,9 @@ const team = await getPublicTeam();
   <section class="section">
     <div class="container">
       <SectionHeading
-        eyebrow="Core team"
-        title="Operational responsibilities across the club"
-        description="These entries are ordered for clarity and can later be replaced or expanded when approved public names and profiles are available."
+        eyebrow="Public-facing team roles"
+        title="Different roles, shared responsibility"
+        description="Each role supports a different part of the club’s work, from coordination and outreach to documentation and design."
       />
       <div class="card-grid team-grid">
         {team.map((member) => <TeamCard member={member} />)}

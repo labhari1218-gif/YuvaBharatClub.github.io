@@ -23,7 +23,7 @@ const { event } = Astro.props;
     <p>{event.data.summary}</p>
     <p class="card__supporting">{event.data.venue}</p>
     <div class="featured-event__actions">
-      <a class="button" href={withBase(`/events/${event.slug}`)}>View event</a>
+      <a class="button" href={withBase(`/events/${event.data.slug}`)}>View event</a>
       {event.data.registrationUrl && (
         <a class="button button--ghost" href={event.data.registrationUrl} target="_blank" rel="noreferrer">
           Registration

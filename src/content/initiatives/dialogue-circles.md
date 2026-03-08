@@ -1,8 +1,8 @@
 ---
 title: Dialogue Circles
 slug: dialogue-circles
-oneLine: Recurring student conversations built around clarity, listening, and thoughtful exchange.
-description: A recurring initiative that supports small-group and open-format discussions on campus.
+oneLine: Recurring student conversations built around listening, clarity, and thoughtful exchange.
+description: A recurring dialogue format that brings students together for open, structured conversation on campus.
 focusArea: Dialogue
 coverImage: /images/brand/initiative-dialogue.svg
 publicStatus: active
@@ -12,4 +12,4 @@ links:
     href: /events/
 ---
 
-Dialogue Circles is a simple, repeatable format for bringing students into structured discussion without turning the website into a heavy program directory. It represents the club's emphasis on youth-centered conversation and constructive participation.
+Dialogue Circles creates space for students to speak, listen, and reflect in a setting that is calm, structured, and inclusive. It represents the club’s belief that meaningful participation starts with thoughtful conversation.

@@ -1,7 +1,8 @@
 ---
 title: Join Yuva Bharat Club
-description: Volunteer, coordinate, design, document, and help shape youth-led campus action through Yuva Bharat Club.
-intro: Want to contribute, volunteer, design, document, organize, or help run events? Bring your energy, ideas, and skills to the team.
+slug: join-page
+description: Find ways to contribute to Yuva Bharat Club through events, planning, documentation, design, and volunteer support.
+intro: Want to contribute your time, skills, or ideas? Yuva Bharat Club welcomes students who want to help build meaningful campus activity.
 seoTitle: Join | Yuva Bharat Club
 seoDescription: Paths to volunteer, collaborate, and contribute to Yuva Bharat Club.
 ---
@@ -20,8 +21,8 @@ Yuva Bharat Club grows through students who are willing to participate with care
 
 ## What to expect
 
-YBC works best when contributors are consistent, respectful, and ready to collaborate across teams. Most activities involve shared ownership rather than isolated tasks.
+The club thrives when contributors are consistent, respectful, and ready to collaborate across teams. Most activities involve shared ownership rather than isolated tasks.
 
 ## Before joining
 
-Use only approved public forms, email addresses, and media. Private member data, personal numbers, and informal coordination details should never be published through the public site.
+Use only official forms, email addresses, and media. Private member data, personal numbers, and informal coordination details should never be published through the public site.

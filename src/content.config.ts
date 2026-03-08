@@ -1,7 +1,8 @@
 import { defineCollection, z } from "astro:content";
+import { glob } from "astro/loaders";
 
 const settings = defineCollection({
-  type: "data",
+  loader: glob({ pattern: "**/*.json", base: "./src/content/settings" }),
   schema: z.object({
     siteTitle: z.string(),
     shortTitle: z.string(),
@@ -49,9 +50,10 @@ const settings = defineCollection({
 });
 
 const pages = defineCollection({
-  type: "content",
+  loader: glob({ pattern: "**/*.md", base: "./src/content/pages" }),
   schema: z.object({
     title: z.string(),
+    slug: z.string(),
     description: z.string(),
     intro: z.string(),
     seoTitle: z.string().optional(),
@@ -61,10 +63,11 @@ const pages = defineCollection({
 });
 
 const events = defineCollection({
-  type: "content",
+  loader: glob({ pattern: "**/*.md", base: "./src/content/events" }),
   schema: z.object({
     title: z.string(),
     titleHi: z.string().optional(),
+    slug: z.string(),
     status: z.enum(["upcoming", "past", "archived"]),
     startDate: z.coerce.date(),
     endDate: z.coerce.date().optional(),
@@ -85,9 +88,10 @@ const events = defineCollection({
 });
 
 const initiatives = defineCollection({
-  type: "content",
+  loader: glob({ pattern: "**/*.md", base: "./src/content/initiatives" }),
   schema: z.object({
     title: z.string(),
+    slug: z.string(),
     oneLine: z.string(),
     description: z.string(),
     focusArea: z.string(),
@@ -106,9 +110,10 @@ const initiatives = defineCollection({
 });
 
 const reports = defineCollection({
-  type: "content",
+  loader: glob({ pattern: "**/*.md", base: "./src/content/reports" }),
   schema: z.object({
     title: z.string(),
+    slug: z.string(),
     date: z.coerce.date(),
     eventRef: z.string().optional(),
     abstract: z.string(),
@@ -128,7 +133,7 @@ const reports = defineCollection({
 });
 
 const gallery = defineCollection({
-  type: "data",
+  loader: glob({ pattern: "**/*.json", base: "./src/content/gallery" }),
   schema: z.object({
     title: z.string(),
     slug: z.string(),
@@ -143,7 +148,7 @@ const gallery = defineCollection({
 });
 
 const team = defineCollection({
-  type: "data",
+  loader: glob({ pattern: "**/*.json", base: "./src/content/team" }),
   schema: z.object({
     name: z.string(),
     role: z.string(),

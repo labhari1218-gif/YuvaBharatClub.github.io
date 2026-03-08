@@ -12,15 +12,15 @@ const past = events.filter((event) => event.data.status !== "upcoming");
 
 <BaseLayout
   title="Events | Yuva Bharat Club"
-  description="Explore upcoming and past Yuva Bharat Club events, from campus discussions and competitions to student-led public activities."
+  description="Explore upcoming events and selected past programs from Yuva Bharat Club at IISER Bhopal."
 >
   <section class="page-hero">
     <div class="container">
       <p class="section-heading__eyebrow">Events</p>
-      <h1>Events, dialogue, and campus participation</h1>
+      <h1>Events, discussions, and campus activity</h1>
       <p class="page-hero__lead">
-        This page brings together upcoming programs and selected past highlights so visitors can quickly understand
-        what Yuva Bharat Club actually does on campus.
+        From dialogue-led sessions to student-led programs, this page brings together the work of
+        Yuva Bharat Club.
       </p>
       <p class="hero__tagline hero__tagline--hi">कार्यक्रम, संवाद और सार्थक भागीदारी।</p>
     </div>
@@ -30,13 +30,13 @@ const past = events.filter((event) => event.data.status !== "upcoming");
     <div class="container">
       <SectionHeading
         eyebrow="Upcoming"
-        title="What’s coming next"
-        description="Upcoming entries highlight where students can attend, participate, or volunteer. Final venue details and registration links should always be approved before publication."
+        title="What’s coming up"
+        description="See upcoming programs where students can attend, volunteer, or take part."
       />
       {upcoming.length ? (
         <div class="card-grid">{upcoming.map((event) => <EventCard event={event} />)}</div>
       ) : (
-        <EmptyState title="No upcoming events are listed yet" copy="The next approved public event will appear here once scheduling details are ready." />
+        <EmptyState title="No upcoming events yet" copy="The next public event will appear here once details are ready." />
       )}
     </div>
   </section>
@@ -45,13 +45,13 @@ const past = events.filter((event) => event.data.status !== "upcoming");
     <div class="container">
       <SectionHeading
         eyebrow="Highlights"
-        title="Recent public event pages"
-        description="Past entries act as a clean public record. They show the club’s activity through concise summaries, approved visuals, and clear event context."
+        title="Past events and highlights"
+        description="These pages offer a clear record of the club’s recent activities, themes, and outcomes."
       />
       {past.length ? (
         <div class="card-grid">{past.map((event) => <EventCard event={event} />)}</div>
       ) : (
-        <EmptyState title="No past event pages yet" copy="Approved event summaries and highlights will appear here as the public archive grows." />
+        <EmptyState title="No past event pages yet" copy="Past events will appear here as the archive grows." />
       )}
     </div>
   </section>

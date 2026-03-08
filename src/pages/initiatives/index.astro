@@ -9,22 +9,22 @@ const initiatives = await getPublicInitiatives();
 
 <BaseLayout
   title="Initiatives | Yuva Bharat Club"
-  description="Discover the club’s recurring ideas and long-term themes, built around youth participation, community spirit, and meaningful engagement."
+  description="Discover the club’s long-term initiatives and recurring formats across dialogue, leadership, and documentation."
 >
   <section class="page-hero">
     <div class="container">
       <p class="section-heading__eyebrow">Initiatives</p>
-      <h1>Recurring formats and long-term themes</h1>
-      <p class="page-hero__lead">These entries give the club a language for its ongoing work beyond one-off events.</p>
+      <h1>Initiatives that give the club continuity</h1>
+      <p class="page-hero__lead">Beyond individual events, these initiatives show how the club sustains dialogue, leadership, and documentation over time.</p>
     </div>
   </section>
 
   <section class="section">
     <div class="container">
       <SectionHeading
-        eyebrow="Public overview"
-        title="Programs shaped for continuity"
-        description="Each initiative page should explain what the work is for, how it contributes to campus life, and where it connects to the club’s events or reports."
+        eyebrow="Ongoing work"
+        title="Themes the club keeps building"
+        description="Each initiative reflects a working area the club continues to strengthen over time."
       />
       <div class="card-grid">
         {initiatives.map((initiative) => <InitiativeCard initiative={initiative} />)}

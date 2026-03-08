@@ -16,14 +16,14 @@ const { settings } = Astro.props;
 <section class="hero">
   <div class="container hero__grid">
     <div class="hero__copy">
-      <p class="hero__eyebrow">Thoughtful youth action on campus</p>
+      <p class="hero__eyebrow">Student-led action at IISER Bhopal</p>
       <h1>Yuva Bharat Club</h1>
       <p class="hero__lead">{settings.siteDescription}</p>
       <p class="hero__tagline">{settings.heroTaglineEn}</p>
       {settings.heroTaglineHi && <p class="hero__tagline hero__tagline--hi">{settings.heroTaglineHi}</p>}
       <div class="hero__actions">
-        <a class="button" href={withBase("/events")}>Explore Events</a>
-        <a class="button button--ghost" href={withBase("/join")}>Join the Club</a>
+        <a class="button" href={withBase("/events")}>See events</a>
+        <a class="button button--ghost" href={withBase("/join")}>Join the club</a>
       </div>
     </div>
 

@@ -35,7 +35,7 @@ const publicEmail = isPublicEmail(settings.email) ? settings.email : undefined;
       </article>
 
       <aside class="sidebar-card">
-        <SectionHeading title="Official public channels" description="Only approved contact details appear here." />
+        <SectionHeading title="Public contact" description="Only official public channels are listed here." />
         <ul class="feature-list">
           {publicEmail && <li><a href={`mailto:${publicEmail}`}>{publicEmail}</a></li>}
           {socials.map((social) => (
@@ -43,9 +43,9 @@ const publicEmail = isPublicEmail(settings.email) ? settings.email : undefined;
               <a href={social.href} target="_blank" rel="noreferrer">{social.label}</a>
             </li>
           ))}
-          {!publicEmail && !socials.length && <li>Official public contact details will appear here after approval.</li>}
-          <li><a href={withBase("/join")}>See how to participate</a></li>
-          <li><a href={withBase("/events")}>Browse public events</a></li>
+          {!publicEmail && !socials.length && <li>Official public contact details will appear here when available.</li>}
+          <li><a href={withBase("/join")}>See how to join</a></li>
+          <li><a href={withBase("/events")}>See events</a></li>
         </ul>
       </aside>
     </div>

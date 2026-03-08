@@ -10,38 +10,38 @@ const settings = await getSiteSettings();
 const overviewCards = [
   {
     title: "What it is",
-    copy: "A student-led campus platform for dialogue, events, leadership, and meaningful participation at IISER Bhopal."
+    copy: "A student-led club for dialogue, events, leadership, and meaningful participation at IISER Bhopal."
   },
   {
     title: "What happens here",
-    copy: "Students contribute through discussions, event execution, documentation, outreach, and collaborative work."
+    copy: "Students help plan events, support discussions, contribute creative work, and take part in collaborative campus activity."
   },
   {
     title: "Why it matters",
-    copy: "The club creates spaces where students do more than attend. They help shape, run, and carry work forward."
+    copy: "The club gives students real ways to participate, take responsibility, and build something useful together."
   }
 ];
 
 const workingAreas = [
   {
     title: "Events & Coordination",
-    copy: "Planning, scheduling, and on-ground execution that turns an idea into a visible campus activity."
+    copy: "Planning, logistics, and on-ground execution that turn ideas into real campus programs."
   },
   {
     title: "Dialogue & Moderation",
-    copy: "Discussions, speaking formats, and youth-centered forums that encourage clarity and participation."
+    copy: "Conversation formats, hosting, and speaking spaces that help students engage with confidence."
   },
   {
     title: "Documentation",
-    copy: "Reports, summaries, and archives that preserve approved public learning and continuity."
+    copy: "Reports, notes, and archives that preserve useful context for future teams."
   },
   {
     title: "Media & Design",
-    copy: "Posters, visuals, and public-facing communication that support the club’s identity and events."
+    copy: "Visual identity, posters, and communication that support events and public-facing initiatives."
   },
   {
     title: "Outreach & Participation",
-    copy: "Volunteer support, coordination, and follow-up that help more students find a meaningful place to contribute."
+    copy: "Volunteer coordination and outreach that help more students find a meaningful place in the work."
   }
 ];
 ---
@@ -64,15 +64,15 @@ const workingAreas = [
       <article class="about-story surface">
         <SectionHeading
           eyebrow="Who we are"
-          title="Thoughtful action, not just activity"
-          description="Yuva Bharat Club is best understood as a student-led space where ideas are discussed seriously and participation is taken seriously too."
+          title="A club built on participation"
+          description="Yuva Bharat Club brings students together to discuss, organize, and take part in campus life with purpose."
         />
         <p>
-          The club creates opportunities for students to contribute, collaborate, organize, and lead through
-          events, discussions, documentation, and public-facing campus activity.
+          Students can contribute by organizing events, joining discussions, supporting documentation,
+          and helping turn ideas into visible campus activity.
         </p>
         <p>
-          In simple terms, the club is about thoughtful action.
+          At its core, the club is about participation with purpose.
           <span class="inline-hi">सार्थक सहभागिता, स्पष्ट संवाद, और छात्र-नेतृत्व पहल।</span>
         </p>
       </article>
@@ -80,9 +80,9 @@ const workingAreas = [
       <aside class="sidebar-card about-story__side">
         <p class="section-heading__eyebrow">At a glance</p>
         <ul class="about-glance-list">
-          <li>Student-led and campus-rooted</li>
-          <li>Focused on dialogue, events, and participation</li>
-          <li>Built for students who want to contribute, not just observe</li>
+          <li>Student-led, campus-rooted, and collaborative</li>
+          <li>Built around dialogue, events, and follow-through</li>
+          <li>Open to students who want to contribute, not just attend</li>
         </ul>
       </aside>
     </div>
@@ -91,9 +91,9 @@ const workingAreas = [
   <section class="section section--cream">
     <div class="container">
       <SectionHeading
-        eyebrow="Overview"
-        title="What people should understand at first glance"
-        description="The About page works best when it says a few clear things well instead of turning into an essay."
+        eyebrow="In brief"
+        title="What Yuva Bharat Club is here to do"
+        description="A clear introduction to the club’s role on campus."
       />
       <div class="overview-grid">
         {overviewCards.map((card) => (
@@ -110,8 +110,8 @@ const workingAreas = [
     <div class="container">
       <SectionHeading
         eyebrow="Working areas"
-        title="How the club stays operational"
-        description="These working areas support the full cycle of a campus activity while keeping responsibilities clear and public communication disciplined."
+        title="How the club works"
+        description="These working areas support the full arc of a campus activity, from planning to follow-up."
       />
       <div class="working-areas-grid">
         {workingAreas.map((area) => (
@@ -128,8 +128,8 @@ const workingAreas = [
     <div class="container">
       <SectionHeading
         eyebrow="Focus pillars"
-        title="The ideas that hold the work together"
-        description="These pillars show the balance between conversation, participation, leadership, and continuity."
+        title="The values behind the work"
+        description="These pillars shape how the club plans, participates, and follows through."
       />
       <PillarGrid pillars={settings.focusPillars} />
     </div>
@@ -138,11 +138,11 @@ const workingAreas = [
   <section class="section">
     <div class="container">
       <CtaBanner
-        title="Explore the club through its public work"
-        copy="The clearest way to understand Yuva Bharat Club is to browse its events, initiatives, and reports together."
-        primaryLabel="Explore events"
+        title="See the club through its work"
+        copy="Browse events, initiatives, and reports to understand what Yuva Bharat Club looks like in practice."
+        primaryLabel="See events"
         primaryHref="/events"
-        secondaryLabel="See how to join"
+        secondaryLabel="How to join"
         secondaryHref="/join"
       />
     </div>

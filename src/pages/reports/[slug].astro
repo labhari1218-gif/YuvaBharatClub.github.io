@@ -9,7 +9,7 @@ import { assetUrl, withBase } from "../../lib/site";
 export async function getStaticPaths() {
   const reports = await getCollection("reports");
   return reports.map((report) => ({
-    params: { slug: report.slug },
+    params: { slug: report.data.slug },
     props: { report }
   }));
 }
@@ -29,14 +29,14 @@ const relatedEvent = getRelatedEvent(events, report.data.eventRef);
         <p class="page-hero__lead">{report.data.abstract}</p>
         <div class="detail-meta">
           <span>{formatDate(report.data.date)}</span>
-          {relatedEvent && <span>Linked to {relatedEvent.data.title}</span>}
+          {relatedEvent && <span>Related to {relatedEvent.data.title}</span>}
         </div>
         <div class="hero__actions">
           {report.data.pdfUrl && (
             <a class="button" href={assetUrl(report.data.pdfUrl)} target="_blank" rel="noreferrer">Open PDF</a>
           )}
           {relatedEvent && (
-            <a class="button button--ghost" href={withBase(`/events/${relatedEvent.slug}`)}>View event</a>
+            <a class="button button--ghost" href={withBase(`/events/${relatedEvent.data.slug}`)}>View event</a>
           )}
         </div>
       </div>
@@ -53,7 +53,7 @@ const relatedEvent = getRelatedEvent(events, report.data.eventRef);
       </article>
 
       <aside class="sidebar-card">
-        <SectionHeading title="Tags and references" description="Supporting details that connect this report to its event and theme." />
+        <SectionHeading title="Quick context" description="Tags and related links that help place this report in context." />
         <ul class="feature-list">
           {report.data.tags.map((tag) => <li>{tag}</li>)}
           {report.data.pressLinks?.map((link) => (

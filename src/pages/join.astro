@@ -33,7 +33,7 @@ const publicRegistrationLinks = settings.registrationLinks?.filter((link) => isP
       </article>
 
       <aside class="sidebar-card">
-        <SectionHeading title="Public pathways" description="Only approved forms and official contact channels are shown here." />
+        <SectionHeading title="Ways to get involved" description="Use official forms when available, or start with events and initiatives." />
         <ul class="feature-list">
           {publicRegistrationLinks.map((link) => (
             <li>
@@ -41,8 +41,8 @@ const publicRegistrationLinks = settings.registrationLinks?.filter((link) => isP
             </li>
           ))}
           {publicEmail && <li><a href={`mailto:${publicEmail}`}>{publicEmail}</a></li>}
-          {!publicRegistrationLinks.length && !publicEmail && <li>Participation details are shared through approved public event and initiative pages.</li>}
-          <li><a href={withBase("/events")}>Browse events</a></li>
+          {!publicRegistrationLinks.length && !publicEmail && <li>The simplest way to get involved right now is through public events and ongoing initiatives.</li>}
+          <li><a href={withBase("/events")}>See events</a></li>
           <li><a href={withBase("/initiatives")}>Explore initiatives</a></li>
         </ul>
       </aside>
@@ -52,9 +52,9 @@ const publicRegistrationLinks = settings.registrationLinks?.filter((link) => isP
   <section class="section">
     <div class="container">
       <CtaBanner
-        title="Take the next public step"
-        copy="If an approved form is available, use it. Otherwise, explore the club’s public work and participate through upcoming events and initiatives."
-        primaryLabel={publicJoinUrl ? "Open join form" : "Browse events"}
+        title="Start where your interest fits"
+        copy="Whether you like events, dialogue, design, or documentation, the easiest way in is to begin with the club’s events and initiatives."
+        primaryLabel={publicJoinUrl ? "Open join form" : "See events"}
         primaryHref={publicJoinUrl ?? "/events"}
         secondaryLabel={publicEmail ? "Email the club" : "Explore initiatives"}
         secondaryHref={publicEmail ? `mailto:${publicEmail}` : "/initiatives"}

@@ -7,7 +7,7 @@ import { assetUrl, withBase } from "../../lib/site";
 export async function getStaticPaths() {
   const initiatives = await getCollection("initiatives");
   return initiatives.map((initiative) => ({
-    params: { slug: initiative.slug },
+    params: { slug: initiative.data.slug },
     props: { initiative }
   }));
 }
@@ -44,14 +44,14 @@ const { Content } = await render(initiative);
       </article>
 
       <aside class="sidebar-card">
-        <SectionHeading title="Related links" description="Internal links stay base-safe for GitHub Pages builds." />
+        <SectionHeading title="Useful links" description="Related pages for following or joining this initiative." />
         <ul class="feature-list">
           {initiative.data.links?.map((link) => (
             <li>
               <a href={withBase(link.href)}>{link.label}</a>
             </li>
           ))}
-          {!initiative.data.links?.length && <li>Links can be added here as the initiative grows.</li>}
+          {!initiative.data.links?.length && <li>More links will appear here as the initiative develops.</li>}
         </ul>
       </aside>
     </div>

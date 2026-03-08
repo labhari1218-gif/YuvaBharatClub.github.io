@@ -30,14 +30,14 @@ const featuredAlbums = pickFeatured(galleryAlbums, settings.homepage.featuredGal
   <section class="section">
     <div class="container">
       <SectionHeading
-        eyebrow="About snapshot"
-        title="A student-led platform for ideas, participation, and youth action"
-        description="Yuva Bharat Club creates meaningful opportunities for students to participate, lead, collaborate, and contribute through events, discussions, initiatives, and community-oriented activities at IISER Bhopal."
+        eyebrow="What the club is"
+        title="A student-led space for dialogue, events, and campus participation"
+        description="Yuva Bharat Club brings students together to discuss ideas, help run events, and take part in campus life with purpose."
       />
       <div class="about-snapshot surface">
         <p>
-          The public site stays deliberately simple: it explains what the club is, shows event-backed proof of activity,
-          and gives students a clear path to participate without exposing internal coordination or unnecessary detail.
+          It is a place for students who want to do more than attend. The club creates room to speak, contribute,
+          volunteer, and build work that others can carry forward.
         </p>
       </div>
     </div>
@@ -46,10 +46,10 @@ const featuredAlbums = pickFeatured(galleryAlbums, settings.homepage.featuredGal
   <section class="section">
     <div class="container">
       <SectionHeading
-        eyebrow="Featured events"
-        title="Recent and flagship public activity"
-        description="A smaller set of event cards is enough to show the club’s work without turning the homepage into an archive."
-        actionLabel="All events"
+        eyebrow="Events"
+        title="What the club has been doing"
+        description="Recent events offer the quickest picture of the club’s energy, themes, and work on campus."
+        actionLabel="See all events"
         actionHref="/events"
       />
       <HighlightsGrid events={featuredEvents} />
@@ -59,9 +59,9 @@ const featuredAlbums = pickFeatured(galleryAlbums, settings.homepage.featuredGal
   <section class="section">
     <div class="container">
       <SectionHeading
-        eyebrow="Focus areas"
-        title="Three clear ways the club shows up on campus"
-        description="The homepage keeps this section tight so visitors understand the club’s core work at a glance."
+        eyebrow="Initiatives"
+        title="Ongoing work beyond one-day events"
+        description="These initiatives show how the club builds continuity across leadership, dialogue, and documentation."
       />
       <div class="card-grid">
         {initiatives.map((initiative) => <InitiativeCard initiative={initiative} />)}
@@ -73,8 +73,8 @@ const featuredAlbums = pickFeatured(galleryAlbums, settings.homepage.featuredGal
     <div class="container">
       <SectionHeading
         eyebrow="Gallery"
-        title="A lighter visual preview"
-        description="A small image preview is enough on the homepage. The full album structure stays on the gallery page."
+        title="Moments from events and preparation"
+        description="A quick visual look at the people, effort, and atmosphere behind the club’s activities."
       />
       <GalleryPreview albums={featuredAlbums} />
     </div>

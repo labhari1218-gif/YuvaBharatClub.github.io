@@ -9,7 +9,7 @@ import { assetUrl, isPublicLink, withBase } from "../../lib/site";
 export async function getStaticPaths() {
   const events = await getCollection("events", ({ data }) => data.public);
   return events.map((event) => ({
-    params: { slug: event.slug },
+    params: { slug: event.data.slug },
     props: { event }
   }));
 }
@@ -37,7 +37,7 @@ const publicReportUrl = isPublicLink(event.data.reportUrl) ? event.data.reportUr
           {publicRegistrationUrl && (
             <a class="button" href={publicRegistrationUrl} target="_blank" rel="noreferrer">Register</a>
           )}
-          {publicReportUrl && <a class="button button--ghost" href={withBase(publicReportUrl)}>Related report</a>}
+          {publicReportUrl && <a class="button button--ghost" href={withBase(publicReportUrl)}>Read report</a>}
         </div>
       </div>
       <img class="detail-hero__image" src={assetUrl(event.data.coverImage)} alt={event.data.title} width="860" height="580" />
@@ -51,11 +51,11 @@ const publicReportUrl = isPublicLink(event.data.reportUrl) ? event.data.reportUr
       </article>
 
       <aside class="sidebar-card">
-        <SectionHeading title="Event notes" description="Key public notes, collaborators, and accessibility details appear here when available." />
+        <SectionHeading title="Quick details" description="Additional context, collaborators, and accessibility notes for the event." />
         <ul class="feature-list">
           {event.data.partnerNames?.map((partner) => <li>{partner}</li>)}
           {event.data.accessibilityNotes && <li>{event.data.accessibilityNotes}</li>}
-          {!event.data.partnerNames?.length && !event.data.accessibilityNotes && <li>Additional event notes will appear here when relevant.</li>}
+          {!event.data.partnerNames?.length && !event.data.accessibilityNotes && <li>More event details will appear here when relevant.</li>}
         </ul>
       </aside>
     </div>
@@ -66,8 +66,8 @@ const publicReportUrl = isPublicLink(event.data.reportUrl) ? event.data.reportUr
       <div class="container">
         <SectionHeading
           eyebrow="Visuals"
-          title="Approved supporting material"
-          description="Posters and supporting visuals from the event appear here when available."
+          title="Event visuals"
+          description="Posters and related visuals from the event."
         />
         <div class="detail-visuals">
           {event.data.posterImage && (

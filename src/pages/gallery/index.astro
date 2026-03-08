@@ -9,13 +9,13 @@ const albums = await getPublicGalleryAlbums();
 
 <BaseLayout
   title="Gallery | Yuva Bharat Club"
-  description="Browse approved gallery albums that show the club’s activity through organized visual archives."
+  description="Browse gallery albums from Yuva Bharat Club events, preparation, and public campus activity."
 >
   <section class="page-hero">
     <div class="container">
       <p class="section-heading__eyebrow">Gallery</p>
-      <h1>Visual snapshots from the club’s public work</h1>
-      <p class="page-hero__lead">Browse approved albums from events, preparation, and student participation on campus.</p>
+      <h1>Gallery</h1>
+      <p class="page-hero__lead">A visual record of events, preparation, and participation across the club’s activities.</p>
     </div>
   </section>
 
@@ -23,8 +23,8 @@ const albums = await getPublicGalleryAlbums();
     <div class="container">
       <SectionHeading
         eyebrow="Albums"
-        title="Approved public media"
-        description="Each album keeps its images, date, and event context together for a clear public archive."
+        title="Albums from recent activity"
+        description="Each album brings together images from a specific event or phase of work."
       />
       <div class="card-grid">
         {albums.map((album) => <GalleryAlbumCard album={album} />)}

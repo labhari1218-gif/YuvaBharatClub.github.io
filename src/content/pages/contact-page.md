@@ -1,23 +1,24 @@
 ---
 title: Contact Yuva Bharat Club
-description: Contact Yuva Bharat Club through official public channels for collaborations, event queries, or approved media requests.
-intro: Use the official club email and approved public links for collaboration or event-related communication.
+slug: contact-page
+description: Contact Yuva Bharat Club through official channels for collaborations, event queries, or approved media requests.
+intro: Use this page for official communication related to events, collaborations, or approved media.
 seoTitle: Contact | Yuva Bharat Club
 seoDescription: Official public contact details for Yuva Bharat Club.
 ---
 
-Yuva Bharat Club keeps its public contact simple and privacy-aware. Use this page for collaboration requests, event questions, or approved media follow-up.
+Use this page for collaborations, event-related questions, or approved media follow-up. The club keeps its public contact simple, clear, and privacy-aware.
 
 **संपर्क भी स्पष्ट, सार्वजनिक और जिम्मेदार हो।**
 
-## Good reasons to reach out
+## When to get in touch
 
 - collaboration on campus events or dialogue formats
 - participation inquiries for upcoming public activities
 - approved documentation or report sharing
 - public-facing media or outreach coordination
 
-## What should not be sent through public channels
+## Please do not send
 
 - personal phone numbers
 - internal approval chain details

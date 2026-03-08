@@ -1,8 +1,8 @@
 ---
 title: Campus Leadership Lab
 slug: campus-leadership-lab
-oneLine: A hands-on working area for planning, coordination, and shared student ownership.
-description: A leadership-oriented initiative that supports event execution, team collaboration, and responsibility on campus.
+oneLine: A practical space for planning, coordination, and shared student ownership.
+description: An initiative that builds the leadership and teamwork needed to turn ideas into real campus activity.
 focusArea: Leadership
 coverImage: /images/brand/initiative-leadership.svg
 publicStatus: active
@@ -12,4 +12,4 @@ links:
     href: /join/
 ---
 
-This initiative highlights the operational side of Yuva Bharat Club. Students contribute not only by appearing at events, but by helping shape them through preparation, coordination, and accountable teamwork.
+Campus Leadership Lab focuses on the work behind the scenes: planning, coordination, follow-through, and shared responsibility. It gives students a chance to learn by doing and to help shape events from the inside.

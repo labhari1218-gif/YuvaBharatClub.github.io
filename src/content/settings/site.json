@@ -1,12 +1,12 @@
 {
   "siteTitle": "Yuva Bharat Club",
   "shortTitle": "YBC",
-  "siteDescription": "A student-led platform for youth leadership, dialogue, events, and campus participation at IISER Bhopal.",
+  "siteDescription": "A student-led club at IISER Bhopal for dialogue, events, leadership, and meaningful participation in campus life.",
   "campusName": "IISER Bhopal",
   "email": "",
-  "heroTaglineEn": "Build ideas. Lead events. Participate with purpose.",
+  "heroTaglineEn": "Start conversations. Shape events. Contribute with purpose.",
   "heroTaglineHi": "युवा ऊर्जा, संवाद और सार्थक सहभागिता का मंच।",
-  "footerText": "Student-led dialogue, events, and meaningful campus participation at IISER Bhopal.",
+  "footerText": "A student-led club at IISER Bhopal for dialogue, events, and meaningful campus participation.",
   "seoImage": "/logo/ybc-logo-reference.png",
   "defaultLocale": "en",
   "supportedLocales": [
@@ -16,19 +16,19 @@
   "focusPillars": [
     {
       "title": "Dialogue",
-      "description": "Thoughtful conversations, youth-centered forums, and public speaking spaces that encourage clarity and participation."
+      "description": "Conversations and forums that help students listen, speak clearly, and participate with confidence."
     },
     {
       "title": "Participation",
-      "description": "Events, volunteering, and campus collaborations that turn interest into visible action."
+      "description": "Events, volunteering, and collaborations that turn interest into visible campus action."
     },
     {
       "title": "Leadership",
-      "description": "Student-led planning, ownership, teamwork, and execution across activities and initiatives."
+      "description": "Student-led planning, teamwork, and ownership across events and initiatives."
     },
     {
       "title": "Documentation",
-      "description": "Reports, highlights, and visual archives that preserve institutional memory for future student teams."
+      "description": "Reports, highlights, and archives that help future student teams build on what came before."
     }
   ],
   "homepage": {

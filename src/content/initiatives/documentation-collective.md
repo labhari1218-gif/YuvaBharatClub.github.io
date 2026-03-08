@@ -1,8 +1,8 @@
 ---
 title: Documentation Collective
 slug: documentation-collective
-oneLine: Reports, visuals, and archives that help future student teams build on what has already been learned.
-description: A long-term documentation stream for public reports, highlights, and approved media.
+oneLine: Reports, visuals, and archives that help the club remember, reflect, and move forward.
+description: An initiative focused on public documentation, event summaries, and visual records.
 focusArea: Documentation
 coverImage: /images/brand/initiative-documentation.svg
 publicStatus: seasonal
@@ -12,4 +12,4 @@ links:
     href: /reports/
 ---
 
-Documentation is part of how a student organization becomes sustainable. This initiative keeps the focus on approved public summaries, visual records, and maintainable archives rather than informal internal chatter.
+Documentation Collective keeps the club’s public record clear and useful. Through reports, visuals, and archives, it helps future teams understand what was done and build on it.
