@@ -1,10 +1,14 @@
 ---
+import { formatDate } from "../../lib/date";
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import GalleryAlbumCard from "../../components/ui/GalleryAlbumCard.astro";
 import SectionHeading from "../../components/ui/SectionHeading.astro";
-import { getPublicGalleryAlbums } from "../../lib/content";
+import InstagramPostCard from "../../components/ui/InstagramPostCard.astro";
+import { getInstagramFeed, getPublicGalleryAlbums } from "../../lib/content";
 
 const albums = await getPublicGalleryAlbums();
+const instagramFeed = await getInstagramFeed();
+const instagramPosts = instagramFeed?.data.posts ?? [];
 ---
 
 <BaseLayout
@@ -31,4 +35,21 @@ const albums = await getPublicGalleryAlbums();
       </div>
     </div>
   </section>
+
+  {instagramFeed && instagramPosts.length > 0 && (
+    <section class="section section--cream">
+      <div class="container">
+        <SectionHeading
+          eyebrow="Instagram"
+          title="Recent posts from the club"
+          description={`Synced from @${instagramFeed.data.username} on ${formatDate(instagramFeed.data.fetchedAt)}.`}
+          actionLabel="Open Instagram"
+          actionHref={instagramFeed.data.profileUrl}
+        />
+        <div class="card-grid">
+          {instagramPosts.map((post) => <InstagramPostCard post={post} />)}
+        </div>
+      </div>
+    </section>
+  )}
 </BaseLayout>

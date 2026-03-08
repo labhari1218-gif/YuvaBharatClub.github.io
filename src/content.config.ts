@@ -147,6 +147,30 @@ const gallery = defineCollection({
   })
 });
 
+const instagram = defineCollection({
+  loader: glob({ pattern: "**/*.json", base: "./src/content/instagram" }),
+  schema: z.object({
+    username: z.string(),
+    profileUrl: z.string().url(),
+    fetchedAt: z.coerce.date(),
+    posts: z.array(
+      z.object({
+        id: z.string(),
+        shortcode: z.string(),
+        permalink: z.string().url(),
+        date: z.coerce.date(),
+        caption: z.string(),
+        excerpt: z.string(),
+        coverImage: z.string(),
+        altText: z.string(),
+        mediaType: z.enum(["image", "video", "carousel"]),
+        likeCount: z.number().nullable(),
+        commentCount: z.number().nullable()
+      })
+    )
+  })
+});
+
 const team = defineCollection({
   loader: glob({ pattern: "**/*.json", base: "./src/content/team" }),
   schema: z.object({
@@ -170,5 +194,6 @@ export const collections = {
   initiatives,
   reports,
   gallery,
+  instagram,
   team
 };

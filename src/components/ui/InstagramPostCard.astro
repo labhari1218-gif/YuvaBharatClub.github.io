@@ -1,0 +1,44 @@
+---
+import { formatDate } from "../../lib/date";
+
+interface InstagramPost {
+  id: string;
+  shortcode: string;
+  permalink: string;
+  date: Date;
+  caption: string;
+  excerpt: string;
+  coverImage: string;
+  altText: string;
+  mediaType: "image" | "video" | "carousel";
+  likeCount: number | null;
+  commentCount: number | null;
+}
+
+interface Props {
+  post: InstagramPost;
+}
+
+const { post } = Astro.props;
+---
+
+<article class="card">
+  <img
+    class="card__media"
+    src={post.coverImage}
+    alt={post.altText}
+    loading="lazy"
+    width="640"
+    height="640"
+    referrerpolicy="no-referrer"
+  />
+  <div class="card__body">
+    <div class="card__meta">
+      <span>Instagram</span>
+      <span>{formatDate(post.date)}</span>
+    </div>
+    <h3>{post.mediaType === "carousel" ? "Carousel post" : post.mediaType === "video" ? "Video post" : "Photo post"}</h3>
+    <p>{post.excerpt}</p>
+    <a class="text-link" href={post.permalink} target="_blank" rel="noreferrer">Open post</a>
+  </div>
+</article>

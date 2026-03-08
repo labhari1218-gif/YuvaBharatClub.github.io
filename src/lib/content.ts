@@ -36,6 +36,11 @@ export const getPublicGalleryAlbums = async () =>
     (a, b) => b.data.date.getTime() - a.data.date.getTime()
   );
 
+export const getInstagramFeed = async () => {
+  const entries = await getCollection("instagram");
+  return entries[0];
+};
+
 export const getPublicTeam = async () =>
   (await getCollection("team", ({ data }) => data.isPublic && data.consentConfirmed)).sort(
     (a, b) => a.data.displayOrder - b.data.displayOrder
