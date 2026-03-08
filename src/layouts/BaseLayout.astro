@@ -1,6 +1,7 @@
 ---
 import Footer from "../components/common/Footer.astro";
 import Header from "../components/common/Header.astro";
+import MotionDesign from "../components/common/MotionDesign.astro";
 import SeoHead from "../components/common/SeoHead.astro";
 import "../styles/global.css";
 import { getSiteSettings } from "../lib/content";
@@ -30,6 +31,12 @@ const publicEmail = isPublicEmail(settings.email) ? settings.email : undefined;
     <SeoHead title={title} description={description} image={image ?? settings.seoImage} noindex={noindex} />
   </head>
   <body>
+    <div class="site-aura" aria-hidden="true">
+      <span class="site-aura__orb site-aura__orb--saffron"></span>
+      <span class="site-aura__orb site-aura__orb--green"></span>
+      <span class="site-aura__orb site-aura__orb--navy"></span>
+      <span class="site-aura__mesh"></span>
+    </div>
     <a class="skip-link" href="#main-content">Skip to content</a>
     <Header currentPath={Astro.url.pathname} siteTitle={settings.siteTitle} shortTitle={settings.shortTitle} />
     <main id="main-content">
@@ -41,5 +48,6 @@ const publicEmail = isPublicEmail(settings.email) ? settings.email : undefined;
       email={publicEmail}
       socials={socials}
     />
+    <MotionDesign />
   </body>
 </html>

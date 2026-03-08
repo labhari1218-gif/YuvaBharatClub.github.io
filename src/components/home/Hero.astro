@@ -14,6 +14,12 @@ const { settings } = Astro.props;
 ---
 
 <section class="hero">
+  <div class="hero__ambient" aria-hidden="true">
+    <span class="hero__halo hero__halo--saffron"></span>
+    <span class="hero__halo hero__halo--green"></span>
+    <span class="hero__halo hero__halo--navy"></span>
+    <span class="hero__gridlines"></span>
+  </div>
   <div class="container hero__grid">
     <div class="hero__copy">
       <p class="hero__eyebrow">Student-led action at IISER Bhopal</p>
@@ -29,6 +35,7 @@ const { settings } = Astro.props;
 
     <div class="hero__visual">
       <div class="hero-card">
+        <div class="hero-card__sheen" aria-hidden="true"></div>
         <img src={assetUrl("/images/brand/hero-ribbon.svg")} alt="Abstract banner inspired by the club logo" />
         <div class="hero-card__badge">
           <img src={assetUrl("/logo/ybc-logo-reference.png")} alt="Yuva Bharat Club logo" width="88" height="88" />
