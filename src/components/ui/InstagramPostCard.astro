@@ -20,25 +20,26 @@ interface Props {
 }
 
 const { post } = Astro.props;
+const postLabel =
+  post.mediaType === "carousel" ? "Carousel" : post.mediaType === "video" ? "Video" : "Image";
 ---
 
 <article class="card">
   <img
-    class="card__media"
+    class="card__media instagram-post-card__media"
     src={post.coverImage}
     alt={post.altText}
     loading="lazy"
     width="640"
     height="640"
-    referrerpolicy="no-referrer"
   />
   <div class="card__body">
     <div class="card__meta">
-      <span>Instagram</span>
+      <span>{postLabel}</span>
       <span>{formatDate(post.date)}</span>
     </div>
-    <h3>{post.mediaType === "carousel" ? "Carousel post" : post.mediaType === "video" ? "Video post" : "Photo post"}</h3>
-    <p>{post.excerpt}</p>
+    <h3>Instagram post</h3>
+    <p class="instagram-post-card__caption">{post.caption || post.excerpt}</p>
     <a class="text-link" href={post.permalink} target="_blank" rel="noreferrer">Open post</a>
   </div>
 </article>

@@ -363,6 +363,7 @@ main {
 .quick-values__grid,
 .pillar-grid,
 .card-grid,
+.instagram-grid,
 .gallery-grid,
 .detail-visuals,
 .site-footer__grid {
@@ -450,7 +451,12 @@ main {
   grid-template-columns: repeat(3, minmax(0, 1fr));
 }
 
+.instagram-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
 .card-grid > *,
+.instagram-grid > *,
 .quick-values__grid > *,
 .site-footer__grid > * {
   min-width: 0;
@@ -571,6 +577,15 @@ main {
   flex-wrap: wrap;
   gap: 0.5rem;
   margin: 1rem 0;
+}
+
+.instagram-post-card__media {
+  aspect-ratio: 1 / 1;
+}
+
+.instagram-post-card__caption {
+  white-space: pre-line;
+  overflow-wrap: anywhere;
 }
 
 .page-hero,
@@ -709,6 +724,7 @@ main {
   }
 
   .card-grid,
+  .instagram-grid,
   .team-grid,
   .overview-grid,
   .working-areas-grid {
@@ -764,6 +780,7 @@ main {
 
   .quick-values__grid,
   .card-grid,
+  .instagram-grid,
   .team-grid,
   .gallery-preview__grid,
   .overview-grid,

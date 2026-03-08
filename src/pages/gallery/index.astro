@@ -41,12 +41,12 @@ const instagramPosts = instagramFeed?.data.posts ?? [];
       <div class="container">
         <SectionHeading
           eyebrow="Instagram"
-          title="Recent posts from the club"
-          description={`Synced from @${instagramFeed.data.username} on ${formatDate(instagramFeed.data.fetchedAt)}.`}
+          title="Instagram archive"
+          description={`All public posts from @${instagramFeed.data.username}, collected here with their images and captions. Last updated ${formatDate(instagramFeed.data.fetchedAt)}.`}
           actionLabel="Open Instagram"
           actionHref={instagramFeed.data.profileUrl}
         />
-        <div class="card-grid">
+        <div class="instagram-grid">
           {instagramPosts.map((post) => <InstagramPostCard post={post} />)}
         </div>
       </div>
