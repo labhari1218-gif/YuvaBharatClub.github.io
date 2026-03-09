@@ -258,6 +258,10 @@ main {
   min-width: 0;
 }
 
+.brandmark .animated-logo {
+  flex: none;
+}
+
 .brandmark span {
   display: grid;
   gap: 0.15rem;
@@ -612,6 +616,10 @@ main {
   box-shadow: 0 10px 24px rgba(1, 59, 105, 0.12);
   z-index: 2;
   animation: badge-float 6s ease-in-out infinite;
+}
+
+.hero-card__badge .animated-logo {
+  flex: none;
 }
 
 .quick-values__grid,
@@ -1036,6 +1044,10 @@ main {
   align-items: start;
 }
 
+.site-footer__brand .animated-logo {
+  flex: none;
+}
+
 .footer-list {
   display: grid;
   gap: 0.55rem;
@@ -1266,9 +1278,8 @@ main {
     display: none;
   }
 
-  .brandmark img {
+  .brandmark .animated-logo {
     width: 46px;
-    height: 46px;
   }
 
   .hero-card__badge {

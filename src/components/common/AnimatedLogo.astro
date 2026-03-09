@@ -1,0 +1,520 @@
+---
+interface Props {
+  label?: string;
+  size?: number;
+  variant?: "soft" | "rich";
+  className?: string;
+}
+
+const {
+  label = "Yuva Bharat Club logo",
+  size = 88,
+  variant = "rich",
+  className = ""
+} = Astro.props;
+
+const uid = `logo-${Math.random().toString(36).slice(2, 10)}`;
+const leafId = `${uid}-leaf`;
+const flagGlowId = `${uid}-flag-glow`;
+const badgeGlowId = `${uid}-badge-glow`;
+
+const leftLeaves = [
+  { x: 46, y: 210, rotate: -62, scale: 1.1 },
+  { x: 35, y: 186, rotate: -48, scale: 1.06 },
+  { x: 29, y: 160, rotate: -38, scale: 1.02 },
+  { x: 27, y: 133, rotate: -24, scale: 0.98 },
+  { x: 32, y: 107, rotate: -8, scale: 0.92 },
+  { x: 43, y: 84, rotate: 8, scale: 0.9 },
+  { x: 59, y: 64, rotate: 22, scale: 0.88 }
+];
+
+const rightLeaves = [
+  { x: 274, y: 210, rotate: 62, scale: 1.1 },
+  { x: 285, y: 186, rotate: 48, scale: 1.06 },
+  { x: 291, y: 160, rotate: 38, scale: 1.02 },
+  { x: 293, y: 133, rotate: 24, scale: 0.98 },
+  { x: 288, y: 107, rotate: 8, scale: 0.92 },
+  { x: 277, y: 84, rotate: -8, scale: 0.9 },
+  { x: 261, y: 64, rotate: -22, scale: 0.88 }
+];
+
+const spokes = Array.from({ length: 24 }, (_, index) => index * 15);
+---
+
+<span
+  class:list={["animated-logo", `animated-logo--${variant}`, className].filter(Boolean)}
+  style={`--logo-size:${size}px;`}
+  role="img"
+  aria-label={label}
+>
+  <svg viewBox="-18 -18 356 356" aria-hidden="true" focusable="false">
+    <defs>
+      <path
+        id={leafId}
+        d="M 0 0 C 8 -13 20 -19 32 -17 C 27 -4 20 10 3 20 C -3 14 -4 7 0 0 Z"
+      ></path>
+      <radialGradient id={flagGlowId} cx="50%" cy="42%" r="65%">
+        <stop offset="0%" stop-color="rgba(255,255,255,0.95)"></stop>
+        <stop offset="38%" stop-color="rgba(255,255,255,0.18)"></stop>
+        <stop offset="100%" stop-color="rgba(255,255,255,0)"></stop>
+      </radialGradient>
+      <radialGradient id={badgeGlowId} cx="50%" cy="50%" r="62%">
+        <stop offset="0%" stop-color="rgba(255,255,255,0.75)"></stop>
+        <stop offset="100%" stop-color="rgba(255,255,255,0)"></stop>
+      </radialGradient>
+    </defs>
+
+    <g class="animated-logo__frame">
+      <g class="animated-logo__scene">
+        <circle class="animated-logo__backdrop" cx="160" cy="168" r="124"></circle>
+        <ellipse class="animated-logo__halo" cx="160" cy="182" rx="128" ry="110"></ellipse>
+
+        <g class="animated-logo__laurel animated-logo__laurel--left">
+          <path
+            class="animated-logo__stem"
+            d="M 98 296 C 56 260 32 220 24 176 C 18 145 22 105 42 72"
+          ></path>
+          {
+            leftLeaves.map((leaf, index) => (
+              <use
+                href={`#${leafId}`}
+                class="animated-logo__leaf"
+                style={`--leaf-delay:${index * 120}ms;`}
+                transform={`translate(${leaf.x} ${leaf.y}) rotate(${leaf.rotate}) scale(${leaf.scale})`}
+              />
+            ))
+          }
+        </g>
+
+        <g class="animated-logo__laurel animated-logo__laurel--right">
+          <path
+            class="animated-logo__stem"
+            d="M 222 296 C 264 260 288 220 296 176 C 302 145 298 105 278 72"
+          ></path>
+          {
+            rightLeaves.map((leaf, index) => (
+              <use
+                href={`#${leafId}`}
+                class="animated-logo__leaf"
+                style={`--leaf-delay:${index * 120 + 60}ms;`}
+                transform={`translate(${leaf.x} ${leaf.y}) rotate(${leaf.rotate}) scale(${leaf.scale})`}
+              />
+            ))
+          }
+        </g>
+
+        <g class="animated-logo__figure">
+          <path
+            class="animated-logo__arm-back"
+            d="M 133 143 C 123 148 118 159 115 175 C 112 193 111 206 113 214 C 115 222 122 224 127 220
+               C 132 215 132 209 131 198 C 130 186 132 177 138 166 Z"
+          ></path>
+          <path
+            class="animated-logo__arm-front"
+            d="M 144 138 C 132 138 124 145 121 154 C 118 162 119 170 123 177 C 126 183 132 188 140 192
+               L 142 178 C 138 174 136 170 136 165 C 136 159 140 154 147 151 Z"
+          ></path>
+          <path
+            class="animated-logo__torso"
+            d="M 147 132 C 136 136 129 145 128 159 L 124 211 C 123 223 127 232 136 238 L 147 245
+               L 173 245 L 182 239 C 193 232 197 223 196 211 L 192 159 C 191 145 184 136 173 132
+               C 167 129 154 129 147 132 Z"
+          ></path>
+          <path
+            class="animated-logo__head"
+            d="M 147 99 C 140 105 137 113 138 123 C 140 135 149 145 161 146 C 173 147 184 139 188 128
+               C 191 118 188 108 180 101 C 171 93 156 92 147 99 Z"
+          ></path>
+          <path
+            class="animated-logo__hair"
+            d="M 143 103 C 151 92 171 92 181 102 C 187 108 189 116 188 121
+               C 179 116 171 113 160 112 C 150 111 145 109 143 103 Z"
+          ></path>
+          <path
+            class="animated-logo__neck"
+            d="M 154 142 L 154 151 C 154 156 158 160 163 160 C 168 160 171 156 171 151 L 171 142 Z"
+          ></path>
+          <path
+            class="animated-logo__leg-left"
+            d="M 142 243 L 134 300 C 133 308 138 313 145 313 C 152 313 157 308 158 300 L 164 252 Z"
+          ></path>
+          <path
+            class="animated-logo__leg-right"
+            d="M 175 243 L 184 300 C 185 308 180 313 173 313 C 166 313 161 308 160 300 L 154 252 Z"
+          ></path>
+          <path
+            class="animated-logo__shoe-left"
+            d="M 141 309 C 133 310 127 314 124 320 L 154 320 C 153 313 148 309 141 309 Z"
+          ></path>
+          <path
+            class="animated-logo__shoe-right"
+            d="M 177 309 C 185 310 191 314 194 320 L 164 320 C 165 313 170 309 177 309 Z"
+          ></path>
+          <path
+            class="animated-logo__hand"
+            d="M 190 212 C 193 212 196 214 197 218 C 198 223 196 232 191 238 C 188 242 183 244 180 242
+               C 177 239 177 233 180 228 C 183 223 184 218 184 215 C 185 213 187 212 190 212 Z"
+          ></path>
+        </g>
+
+        <g class="animated-logo__pole">
+          <line x1="118" y1="28" x2="134" y2="223"></line>
+          <circle cx="116" cy="25" r="6"></circle>
+        </g>
+
+        <g class="animated-logo__pole-shadow" aria-hidden="true">
+          <line x1="121" y1="32" x2="137" y2="223"></line>
+        </g>
+
+        <g class="animated-logo__flag">
+          <g class="animated-logo__cloth">
+            <path
+              class="animated-logo__stripe animated-logo__stripe--saffron"
+              d="M 120 39 C 154 28 186 25 216 28 C 241 31 260 38 286 34 L 287 67
+                 C 261 74 240 70 214 67 C 183 63 154 64 122 77 Z"
+            ></path>
+            <path
+              class="animated-logo__stripe animated-logo__stripe--white"
+              d="M 122 77 C 152 65 181 64 213 67 C 240 70 261 74 287 67 L 288 98
+                 C 261 106 241 103 214 100 C 182 96 151 97 123 108 Z"
+            ></path>
+            <path
+              class="animated-logo__stripe animated-logo__stripe--green"
+              d="M 123 108 C 151 97 182 96 214 100 C 241 103 261 106 288 98 L 289 131
+                 C 262 140 242 136 214 133 C 181 129 151 131 124 143 Z"
+            ></path>
+            <circle class="animated-logo__chakra-ring" cx="206" cy="83" r="18"></circle>
+            <circle class="animated-logo__chakra-core" cx="206" cy="83" r="2.6"></circle>
+            <g class="animated-logo__chakra-spokes">
+              {
+                spokes.map((angle) => (
+                  <line
+                    x1="206"
+                    y1="83"
+                    x2="206"
+                    y2="66.5"
+                    transform={`rotate(${angle} 206 83)`}
+                  ></line>
+                ))
+              }
+            </g>
+            <path
+              class="animated-logo__flag-outline"
+              d="M 120 39 C 154 28 186 25 216 28 C 241 31 260 38 286 34"
+            ></path>
+            <circle class="animated-logo__flag-glow" cx="203" cy="79" r="48" fill={`url(#${flagGlowId})`}></circle>
+          </g>
+        </g>
+
+        <circle class="animated-logo__badge-light" cx="160" cy="170" r="118" fill={`url(#${badgeGlowId})`}></circle>
+      </g>
+    </g>
+  </svg>
+</span>
+
+<style>
+  .animated-logo {
+    display: inline-flex;
+    width: min(100%, var(--logo-size));
+    aspect-ratio: 1;
+    filter: drop-shadow(0 18px 28px rgba(1, 59, 105, 0.14));
+  }
+
+  .animated-logo svg {
+    width: 100%;
+    height: 100%;
+    overflow: visible;
+  }
+
+  .animated-logo__frame {
+    transform-origin: center;
+  }
+
+  .animated-logo__scene {
+    transform-origin: center;
+    animation: scene-float 8s ease-in-out infinite;
+  }
+
+  .animated-logo__backdrop {
+    fill: rgba(255, 255, 255, 0.68);
+    stroke: rgba(1, 59, 105, 0.1);
+    stroke-width: 1.8;
+  }
+
+  .animated-logo--soft .animated-logo__scene {
+    animation-duration: 10s;
+  }
+
+  .animated-logo--soft .animated-logo__frame {
+    transform: scale(0.9);
+  }
+
+  .animated-logo--rich .animated-logo__frame {
+    transform: scale(0.96);
+  }
+
+  .animated-logo__halo {
+    fill: rgba(1, 59, 105, 0.06);
+    filter: blur(14px);
+  }
+
+  .animated-logo__stem,
+  .animated-logo__leaf,
+  .animated-logo__chakra-ring,
+  .animated-logo__chakra-core,
+  .animated-logo__chakra-spokes line {
+    fill: #013b69;
+    stroke: #013b69;
+  }
+
+  .animated-logo__stem {
+    fill: none;
+    stroke-width: 4.5;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+
+  .animated-logo__laurel {
+    transform-origin: center;
+    animation: laurel-sway 6s ease-in-out infinite;
+  }
+
+  .animated-logo__laurel--right {
+    animation-delay: -2.8s;
+  }
+
+  .animated-logo__leaf {
+    stroke: none;
+    transform-origin: center;
+    animation: leaf-breathe 4.8s ease-in-out infinite;
+    animation-delay: var(--leaf-delay);
+  }
+
+  .animated-logo__pole line,
+  .animated-logo__pole circle,
+  .animated-logo__figure path {
+    fill: #df7813;
+    stroke: #df7813;
+    stroke-linejoin: round;
+    stroke-linecap: round;
+  }
+
+  .animated-logo__pole {
+    transform-origin: 126px 128px;
+    animation: pole-sway 4.6s ease-in-out infinite;
+  }
+
+  .animated-logo__pole-shadow line {
+    fill: none;
+    stroke: rgba(1, 59, 105, 0.14);
+    stroke-width: 6.8;
+    stroke-linecap: round;
+  }
+
+  .animated-logo__pole line {
+    stroke-width: 5.2;
+  }
+
+  .animated-logo__figure {
+    transform-origin: 160px 210px;
+    animation: figure-rise 5.4s ease-in-out infinite;
+  }
+
+  .animated-logo__hair {
+    fill: #c56b12;
+    stroke: #c56b12;
+  }
+
+  .animated-logo__shoe-left,
+  .animated-logo__shoe-right {
+    fill: #b96411;
+    stroke: #b96411;
+  }
+
+  .animated-logo__flag {
+    transform-origin: 132px 84px;
+    animation: flag-carry 4.6s ease-in-out infinite;
+  }
+
+  .animated-logo__cloth {
+    transform-origin: 146px 85px;
+    animation: cloth-wave 3.4s ease-in-out infinite;
+  }
+
+  .animated-logo__stripe {
+    stroke: none;
+  }
+
+  .animated-logo__flag-outline {
+    fill: none;
+    stroke: rgba(255, 255, 255, 0.55);
+    stroke-width: 2;
+    stroke-linecap: round;
+  }
+
+  .animated-logo__stripe--saffron {
+    fill: #df7813;
+  }
+
+  .animated-logo__stripe--white {
+    fill: #ffffff;
+  }
+
+  .animated-logo__stripe--green {
+    fill: #237d3f;
+  }
+
+  .animated-logo__chakra-ring {
+    fill: none;
+    stroke-width: 2.2;
+  }
+
+  .animated-logo__chakra-spokes {
+    transform-origin: 206px 83px;
+    animation: chakra-spin 14s linear infinite;
+  }
+
+  .animated-logo__chakra-spokes line {
+    stroke-width: 1.4;
+  }
+
+  .animated-logo__flag-glow,
+  .animated-logo__badge-light {
+    opacity: 0.55;
+    animation: glow-pulse 4.2s ease-in-out infinite;
+  }
+
+  .animated-logo--soft {
+    filter: drop-shadow(0 12px 20px rgba(1, 59, 105, 0.12));
+  }
+
+  .animated-logo--soft .animated-logo__backdrop {
+    fill: rgba(255, 255, 255, 0.5);
+    stroke: rgba(1, 59, 105, 0.06);
+  }
+
+  .animated-logo--soft .animated-logo__cloth {
+    animation-duration: 4.2s;
+  }
+
+  .animated-logo--soft .animated-logo__backdrop,
+  .animated-logo--soft .animated-logo__halo,
+  .animated-logo--soft .animated-logo__pole-shadow,
+  .animated-logo--soft .animated-logo__flag-outline {
+    opacity: 0.72;
+  }
+
+  .animated-logo--soft .animated-logo__flag-glow,
+  .animated-logo--soft .animated-logo__badge-light {
+    opacity: 0.38;
+  }
+
+  @keyframes scene-float {
+    0%,
+    100% {
+      transform: translateY(0);
+    }
+
+    50% {
+      transform: translateY(-4px);
+    }
+  }
+
+  @keyframes laurel-sway {
+    0%,
+    100% {
+      transform: rotate(0deg);
+    }
+
+    50% {
+      transform: rotate(1.6deg);
+    }
+  }
+
+  @keyframes leaf-breathe {
+    0%,
+    100% {
+      transform: scale(1);
+    }
+
+    50% {
+      transform: scale(1.05);
+    }
+  }
+
+  @keyframes pole-sway {
+    0%,
+    100% {
+      transform: rotate(0deg);
+    }
+
+    50% {
+      transform: rotate(-1.4deg);
+    }
+  }
+
+  @keyframes figure-rise {
+    0%,
+    100% {
+      transform: translateY(0);
+    }
+
+    50% {
+      transform: translateY(-2px);
+    }
+  }
+
+  @keyframes flag-carry {
+    0%,
+    100% {
+      transform: rotate(0deg);
+    }
+
+    50% {
+      transform: rotate(-1.1deg);
+    }
+  }
+
+  @keyframes cloth-wave {
+    0%,
+    100% {
+      transform: skewY(0deg) translateX(0);
+    }
+
+    25% {
+      transform: skewY(1.2deg) translateX(1px);
+    }
+
+    50% {
+      transform: skewY(0deg) translateX(0);
+    }
+
+    75% {
+      transform: skewY(-1.2deg) translateX(-1px);
+    }
+  }
+
+  @keyframes chakra-spin {
+    to {
+      transform: rotate(360deg);
+    }
+  }
+
+  @keyframes glow-pulse {
+    0%,
+    100% {
+      opacity: 0.32;
+    }
+
+    50% {
+      opacity: 0.62;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .animated-logo *,
+    .animated-logo__scene {
+      animation: none !important;
+    }
+  }
+</style>

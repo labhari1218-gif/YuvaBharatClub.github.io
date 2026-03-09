@@ -1,4 +1,5 @@
 ---
+import AnimatedLogo from "../common/AnimatedLogo.astro";
 import { assetUrl, withBase } from "../../lib/site";
 
 interface Props {
@@ -44,7 +45,7 @@ const { settings } = Astro.props;
           height="600"
         />
         <div class="hero-card__badge">
-          <img src={assetUrl("/logo/ybc-logo-reference.png")} alt="Yuva Bharat Club logo" width="88" height="88" />
+          <AnimatedLogo size={88} label="Yuva Bharat Club logo" variant="rich" />
           <span>{settings.campusName}</span>
         </div>
       </div>

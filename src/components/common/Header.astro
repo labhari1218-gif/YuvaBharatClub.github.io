@@ -1,6 +1,7 @@
 ---
+import AnimatedLogo from "./AnimatedLogo.astro";
 import MobileNav from "./MobileNav.astro";
-import { assetUrl, isCurrentPath, navLinks, withBase } from "../../lib/site";
+import { isCurrentPath, navLinks, withBase } from "../../lib/site";
 
 interface Props {
   currentPath: string;
@@ -14,7 +15,7 @@ const { currentPath, siteTitle, shortTitle } = Astro.props;
 <header class="site-header">
   <div class="container site-header__inner">
     <a class="brandmark" href={withBase("/")}>
-      <img src={assetUrl("/logo/ybc-logo-mark.png")} alt={`${siteTitle} logo`} width="56" height="56" />
+      <AnimatedLogo size={56} label={`${siteTitle} logo`} variant="soft" />
       <span>
         <strong>{shortTitle}</strong>
         <small>{siteTitle}</small>
