@@ -15,6 +15,7 @@ const { initiative } = Astro.props;
     src={assetUrl(initiative.data.coverImage)}
     alt={initiative.data.title}
     loading="lazy"
+    decoding="async"
     width="640"
     height="420"
   />

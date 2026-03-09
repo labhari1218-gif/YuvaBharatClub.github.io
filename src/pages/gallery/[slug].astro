@@ -37,7 +37,7 @@ const albumLead = relatedEvent
           <a class="button button--ghost" href={withBase(`/events/${relatedEvent.data.slug}`)}>View event</a>
         )}
       </div>
-      <img class="detail-hero__image" src={assetUrl(album.data.coverImage)} alt={album.data.title} width="860" height="580" />
+      <img class="detail-hero__image" src={assetUrl(album.data.coverImage)} alt={album.data.title} width="860" height="580" decoding="async" />
     </div>
   </section>
 
@@ -50,7 +50,7 @@ const albumLead = relatedEvent
       />
       <div class="gallery-grid">
         {album.data.images.map((image, index) => (
-          <img src={assetUrl(image)} alt={album.data.altTextSet[index] ?? album.data.title} width="520" height="360" loading="lazy" />
+          <img src={assetUrl(image)} alt={album.data.altTextSet[index] ?? album.data.title} width="520" height="360" loading="lazy" decoding="async" />
         ))}
       </div>
     </div>

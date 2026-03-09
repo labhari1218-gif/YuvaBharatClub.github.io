@@ -17,6 +17,7 @@ const { event } = Astro.props;
     src={assetUrl(event.data.coverImage)}
     alt={event.data.title}
     loading="lazy"
+    decoding="async"
     width="640"
     height="420"
   />

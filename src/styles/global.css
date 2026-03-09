@@ -71,6 +71,21 @@ body::after {
   transform: translate3d(0, calc(var(--scroll-progress) * -18px), 0);
 }
 
+body.motion-lite {
+  background: linear-gradient(180deg, #fffdf8 0%, var(--color-cream) 58%, #fff 100%);
+}
+
+body.motion-lite::before,
+body.motion-lite::after {
+  display: none;
+}
+
+body.motion-lite .site-aura,
+body.motion-lite .hero__ambient,
+body.motion-lite .hero-card__sheen {
+  display: none;
+}
+
 .site-aura {
   position: fixed;
   inset: 0;
@@ -222,6 +237,12 @@ main {
   padding: clamp(3.5rem, 8vw, 6.5rem) 0;
 }
 
+.section,
+.site-footer {
+  content-visibility: auto;
+  contain-intrinsic-size: 1px 900px;
+}
+
 .section--tight {
   padding: 1.25rem 0 0;
 }
@@ -258,7 +279,7 @@ main {
   min-width: 0;
 }
 
-.brandmark .animated-logo {
+.brandmark img {
   flex: none;
 }
 
@@ -618,7 +639,7 @@ main {
   animation: badge-float 6s ease-in-out infinite;
 }
 
-.hero-card__badge .animated-logo {
+.hero-card__badge img {
   flex: none;
 }
 
@@ -1044,7 +1065,7 @@ main {
   align-items: start;
 }
 
-.site-footer__brand .animated-logo {
+.site-footer__brand img {
   flex: none;
 }
 
@@ -1123,6 +1144,28 @@ main {
 .footer-list a:hover,
 .site-footer__socials a:hover {
   transform: translateY(-2px);
+}
+
+body.motion-lite .quick-values article,
+body.motion-lite .pillar-card,
+body.motion-lite .gallery-preview__grid img,
+body.motion-lite .hero-card,
+body.motion-lite .hero-card__flag,
+body.motion-lite .hero-card__badge,
+body.motion-lite .site-aura__orb,
+body.motion-lite .site-aura__mesh {
+  animation: none !important;
+  transform: none !important;
+}
+
+body.motion-lite .motion-ready .reveal-on-scroll,
+body.motion-lite .reveal-on-scroll,
+body.motion-lite .tilt-surface,
+body.motion-lite .tilt-surface.is-tilting {
+  opacity: 1;
+  transform: none;
+  transition: none;
+  box-shadow: inherit;
 }
 
 .button:hover::after {
@@ -1278,8 +1321,9 @@ main {
     display: none;
   }
 
-  .brandmark .animated-logo {
+  .brandmark img {
     width: 46px;
+    height: 46px;
   }
 
   .hero-card__badge {
@@ -1294,6 +1338,58 @@ main {
   .hero::after {
     width: 26rem;
     height: 12rem;
+  }
+}
+
+@media (hover: none), (pointer: coarse), (max-width: 900px) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .site-header {
+    backdrop-filter: none;
+  }
+
+  body::before,
+  body::after,
+  .site-aura,
+  .hero__ambient,
+  .hero-card__sheen {
+    display: none;
+  }
+
+  .site-header,
+  .hero-card,
+  .card,
+  .quick-values article,
+  .pillar-card,
+  .sidebar-card,
+  .cta-banner {
+    box-shadow: 0 14px 34px rgba(1, 59, 105, 0.08);
+  }
+
+  .site-aura__orb,
+  .site-aura__mesh,
+  .hero-card,
+  .hero-card__flag,
+  .hero-card__badge,
+  .quick-values article,
+  .card,
+  .pillar-card,
+  .gallery-preview__grid img,
+  .detail-visuals img {
+    animation: none !important;
+    transform: none !important;
+  }
+
+  .motion-ready .reveal-on-scroll,
+  .motion-ready .reveal-on-scroll.is-visible,
+  .tilt-surface,
+  .tilt-surface.is-tilting {
+    opacity: 1;
+    transform: none;
+    transition: none;
+    box-shadow: inherit;
   }
 }
 

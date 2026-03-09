@@ -32,7 +32,7 @@ const { Content } = await render(initiative);
           <span>{initiative.data.publicStatus}</span>
         </div>
       </div>
-      <img class="detail-hero__image" src={assetUrl(initiative.data.coverImage)} alt={initiative.data.title} width="860" height="580" />
+      <img class="detail-hero__image" src={assetUrl(initiative.data.coverImage)} alt={initiative.data.title} width="860" height="580" decoding="async" />
     </div>
   </section>
 

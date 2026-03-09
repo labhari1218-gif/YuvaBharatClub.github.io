@@ -12,7 +12,7 @@ const { event } = Astro.props;
 ---
 
 <article class="featured-event">
-  <img src={assetUrl(event.data.coverImage)} alt={event.data.title} width="840" height="520" />
+  <img src={assetUrl(event.data.coverImage)} alt={event.data.title} width="840" height="520" decoding="async" />
   <div class="featured-event__content">
     <div class="card__meta">
       <span>{event.data.status}</span>

@@ -1,6 +1,5 @@
 ---
-import AnimatedLogo from "./AnimatedLogo.astro";
-import { withBase } from "../../lib/site";
+import { assetUrl, withBase } from "../../lib/site";
 
 interface SocialLink {
   label: string;
@@ -21,7 +20,7 @@ const hasMeta = Boolean(email || socials.length);
 <footer class="site-footer">
   <div class="container site-footer__grid">
     <div class="site-footer__brand">
-      <AnimatedLogo size={92} label={`${siteTitle} logo`} variant="rich" />
+      <img src={assetUrl("/logo/ybc-logo-reference.png")} alt={`${siteTitle} logo`} width="92" height="92" />
       <div>
         <h2>{siteTitle}</h2>
         <p>{footerText}</p>

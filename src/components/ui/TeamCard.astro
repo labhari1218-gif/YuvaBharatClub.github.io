@@ -16,6 +16,7 @@ const { member } = Astro.props;
       src={assetUrl(member.data.photo)}
       alt={member.data.name}
       loading="lazy"
+      decoding="async"
       width="480"
       height="520"
     />

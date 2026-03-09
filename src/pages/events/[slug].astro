@@ -38,7 +38,7 @@ const publicRegistrationUrl = isPublicLink(event.data.registrationUrl) ? event.d
           )}
         </div>
       </div>
-      <img class="detail-hero__image" src={assetUrl(event.data.coverImage)} alt={event.data.title} width="860" height="580" />
+      <img class="detail-hero__image" src={assetUrl(event.data.coverImage)} alt={event.data.title} width="860" height="580" decoding="async" />
     </div>
   </section>
 
@@ -69,10 +69,10 @@ const publicRegistrationUrl = isPublicLink(event.data.registrationUrl) ? event.d
         />
         <div class="detail-visuals">
           {event.data.posterImage && (
-            <img src={assetUrl(event.data.posterImage)} alt={`${event.data.title} poster`} width="420" height="560" />
+            <img src={assetUrl(event.data.posterImage)} alt={`${event.data.title} poster`} width="420" height="560" loading="lazy" decoding="async" />
           )}
           {event.data.galleryImages?.map((image, index) => (
-            <img src={assetUrl(image)} alt={`Supporting visual ${index + 1} from ${event.data.title}`} width="420" height="280" />
+            <img src={assetUrl(image)} alt={`Supporting visual ${index + 1} from ${event.data.title}`} width="420" height="280" loading="lazy" decoding="async" />
           ))}
         </div>
       </div>
