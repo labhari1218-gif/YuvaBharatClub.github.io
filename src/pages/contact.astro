@@ -2,6 +2,7 @@
 import { render } from "astro:content";
 import BaseLayout from "../layouts/BaseLayout.astro";
 import SectionHeading from "../components/ui/SectionHeading.astro";
+import EmailLink from "../components/ui/EmailLink.astro";
 import { getPageEntry, getSiteSettings } from "../lib/content";
 import { isPublicEmail, isPublicLink, withBase } from "../lib/site";
 
@@ -37,7 +38,7 @@ const publicEmail = isPublicEmail(settings.email) ? settings.email : undefined;
       <aside class="sidebar-card">
         <SectionHeading title="Public contact" description="Only official public channels are listed here." />
         <ul class="feature-list">
-          {publicEmail && <li><a href={`mailto:${publicEmail}`}>{publicEmail}</a></li>}
+          {publicEmail && <li><EmailLink email={publicEmail} /></li>}
           {socials.map((social) => (
             <li>
               <a href={social.href} target="_blank" rel="noreferrer">{social.label}</a>

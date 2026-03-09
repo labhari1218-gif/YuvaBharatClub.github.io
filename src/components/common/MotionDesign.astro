@@ -9,10 +9,27 @@
     if (prefersReducedMotion.matches || prefersLiteMotion) {
       body.classList.add("motion-lite");
       root.style.setProperty("--scroll-progress", "0");
-      return;
+    } else {
+      body.classList.add("motion-ready");
     }
 
-    body.classList.add("motion-ready");
+    const useAndroidMailFallback =
+      /Android/i.test(navigator.userAgent) || prefersLiteMotion;
+
+    if (useAndroidMailFallback) {
+      document.querySelectorAll("a[data-email-link]").forEach((link) => {
+        if (!(link instanceof HTMLAnchorElement)) return;
+        const gmailCompose = link.dataset.gmailCompose;
+        if (!gmailCompose) return;
+        link.href = gmailCompose;
+        link.target = "_blank";
+        link.rel = "noreferrer noopener";
+      });
+    }
+
+    if (prefersReducedMotion.matches || prefersLiteMotion) {
+      return;
+    }
 
     const revealTargets = [
       ...document.querySelectorAll(

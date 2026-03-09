@@ -1,0 +1,19 @@
+---
+import { gmailComposeUrl, mailtoUrl } from "../../lib/site";
+
+interface Props {
+  email: string;
+  label?: string;
+  className?: string;
+}
+
+const { email, label, className } = Astro.props;
+const text = label ?? email;
+---
+
+<a
+  href={mailtoUrl(email)}
+  data-email-link
+  data-gmail-compose={gmailComposeUrl(email)}
+  class={className}
+>{text}</a>

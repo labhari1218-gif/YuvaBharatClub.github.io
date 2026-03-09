@@ -65,3 +65,26 @@ export const isPublicEmail = (value?: string) =>
   !!value &&
   !isPlaceholderValue(value) &&
   /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
+
+export const mailtoUrl = (email: string, params?: { subject?: string; body?: string }) => {
+  const search = new URLSearchParams();
+
+  if (params?.subject) search.set("subject", params.subject);
+  if (params?.body) search.set("body", params.body);
+
+  const query = search.toString();
+  return `mailto:${email}${query ? `?${query}` : ""}`;
+};
+
+export const gmailComposeUrl = (email: string, params?: { subject?: string; body?: string }) => {
+  const search = new URLSearchParams({
+    view: "cm",
+    fs: "1",
+    to: email
+  });
+
+  if (params?.subject) search.set("su", params.subject);
+  if (params?.body) search.set("body", params.body);
+
+  return `https://mail.google.com/mail/?${search.toString()}`;
+};

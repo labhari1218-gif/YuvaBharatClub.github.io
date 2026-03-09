@@ -1,4 +1,5 @@
 ---
+import EmailLink from "../ui/EmailLink.astro";
 import { assetUrl, withBase } from "../../lib/site";
 
 interface SocialLink {
@@ -48,7 +49,7 @@ const hasMeta = Boolean(email || socials.length);
   </div>
   {hasMeta && (
     <div class="container site-footer__meta">
-      {email && <a href={`mailto:${email}`}>{email}</a>}
+      {email && <EmailLink email={email} />}
       <div class="site-footer__socials">
         {
           socials.map((social) => (

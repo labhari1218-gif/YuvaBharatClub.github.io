@@ -2,9 +2,10 @@
 import { render } from "astro:content";
 import BaseLayout from "../layouts/BaseLayout.astro";
 import CtaBanner from "../components/ui/CtaBanner.astro";
+import EmailLink from "../components/ui/EmailLink.astro";
 import SectionHeading from "../components/ui/SectionHeading.astro";
 import { getPageEntry, getSiteSettings } from "../lib/content";
-import { isPublicEmail, isPublicLink, withBase } from "../lib/site";
+import { isPublicEmail, isPublicLink, mailtoUrl, withBase } from "../lib/site";
 
 const page = await getPageEntry("join-page");
 const settings = await getSiteSettings();
@@ -40,7 +41,7 @@ const publicRegistrationLinks = settings.registrationLinks?.filter((link) => isP
               <a href={link.href} target="_blank" rel="noreferrer">{link.label}</a>
             </li>
           ))}
-          {publicEmail && <li><a href={`mailto:${publicEmail}`}>{publicEmail}</a></li>}
+          {publicEmail && <li><EmailLink email={publicEmail} /></li>}
           {!publicRegistrationLinks.length && !publicEmail && <li>The simplest way to get involved right now is through public events and ongoing initiatives.</li>}
           <li><a href={withBase("/events")}>See events</a></li>
           <li><a href={withBase("/initiatives")}>Explore initiatives</a></li>
@@ -57,7 +58,7 @@ const publicRegistrationLinks = settings.registrationLinks?.filter((link) => isP
         primaryLabel={publicJoinUrl ? "Open join form" : "See events"}
         primaryHref={publicJoinUrl ?? "/events"}
         secondaryLabel={publicEmail ? "Email the club" : "Explore initiatives"}
-        secondaryHref={publicEmail ? `mailto:${publicEmail}` : "/initiatives"}
+        secondaryHref={publicEmail ? mailtoUrl(publicEmail) : "/initiatives"}
       />
     </div>
   </section>

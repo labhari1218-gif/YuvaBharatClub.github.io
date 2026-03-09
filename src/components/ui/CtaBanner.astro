@@ -1,5 +1,5 @@
 ---
-import { withBase } from "../../lib/site";
+import { gmailComposeUrl, withBase } from "../../lib/site";
 
 interface Props {
   title: string;
@@ -18,6 +18,9 @@ const {
   secondaryLabel,
   secondaryHref
 } = Astro.props;
+
+const primaryIsMail = primaryHref.startsWith("mailto:");
+const secondaryIsMail = secondaryHref?.startsWith("mailto:");
 ---
 
 <section class="cta-banner">
@@ -28,9 +31,19 @@ const {
   </div>
 
   <div class="cta-banner__actions">
-    <a class="button" href={withBase(primaryHref)}>{primaryLabel}</a>
+    <a
+      class="button"
+      href={withBase(primaryHref)}
+      data-email-link={primaryIsMail ? true : undefined}
+      data-gmail-compose={primaryIsMail ? gmailComposeUrl(primaryHref.replace(/^mailto:/, "").split("?")[0]) : undefined}
+    >{primaryLabel}</a>
     {secondaryLabel && secondaryHref && (
-      <a class="button button--ghost" href={withBase(secondaryHref)}>{secondaryLabel}</a>
+      <a
+        class="button button--ghost"
+        href={withBase(secondaryHref)}
+        data-email-link={secondaryIsMail ? true : undefined}
+        data-gmail-compose={secondaryIsMail ? gmailComposeUrl(secondaryHref.replace(/^mailto:/, "").split("?")[0]) : undefined}
+      >{secondaryLabel}</a>
     )}
   </div>
 </section>
