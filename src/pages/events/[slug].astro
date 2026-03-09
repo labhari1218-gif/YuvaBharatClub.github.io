@@ -4,7 +4,7 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
 import InlineLanguageLabel from "../../components/ui/InlineLanguageLabel.astro";
 import SectionHeading from "../../components/ui/SectionHeading.astro";
 import { formatDateRange } from "../../lib/date";
-import { assetUrl, isPublicLink, withBase } from "../../lib/site";
+import { assetUrl, isPublicLink } from "../../lib/site";
 
 export async function getStaticPaths() {
   const events = await getCollection("events", ({ data }) => data.public);
@@ -17,7 +17,6 @@ export async function getStaticPaths() {
 const { event } = Astro.props;
 const { Content } = await render(event);
 const publicRegistrationUrl = isPublicLink(event.data.registrationUrl) ? event.data.registrationUrl : undefined;
-const publicReportUrl = isPublicLink(event.data.reportUrl) ? event.data.reportUrl : undefined;
 ---
 
 <BaseLayout title={`${event.data.title} | Yuva Bharat Club`} description={event.data.summary} image={event.data.coverImage}>
@@ -37,7 +36,6 @@ const publicReportUrl = isPublicLink(event.data.reportUrl) ? event.data.reportUr
           {publicRegistrationUrl && (
             <a class="button" href={publicRegistrationUrl} target="_blank" rel="noreferrer">Register</a>
           )}
-          {publicReportUrl && <a class="button button--ghost" href={withBase(publicReportUrl)}>Read report</a>}
         </div>
       </div>
       <img class="detail-hero__image" src={assetUrl(event.data.coverImage)} alt={event.data.title} width="860" height="580" />

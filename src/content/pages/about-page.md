@@ -13,7 +13,7 @@ Yuva Bharat Club is a student-led club where ideas are discussed, work is shared
 In simple terms, the club is about participation with purpose.  
 **सार्थक सहभागिता, स्पष्ट संवाद, और छात्र-नेतृत्व पहल।**
 
-The club’s public presence is built around what people can actually see and join: events, initiatives, reports, and the roles that help the work move forward.
+The club’s public presence is built around what people can actually see and join: events, initiatives, gallery highlights, and the roles that help the work move forward.
 
 ## How the club works
 
@@ -21,7 +21,7 @@ Yuva Bharat Club works through a few practical areas that support the full life 
 
 - event planning and coordination
 - moderation, discussion, and public speaking
-- documentation and report writing
+- documentation and public summaries
 - design, media, and photography
 - outreach, participation, and volunteer support
 

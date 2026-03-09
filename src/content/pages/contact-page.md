@@ -15,7 +15,7 @@ Use this page for collaborations, event-related questions, or approved media fol
 
 - collaboration on campus events or dialogue formats
 - participation inquiries for upcoming public activities
-- approved documentation or report sharing
+- approved documentation or media sharing
 - public-facing media or outreach coordination
 
 ## Please do not send

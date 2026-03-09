@@ -28,9 +28,6 @@ export const getPublicInitiatives = async () =>
     Number(b.data.featured) - Number(a.data.featured) || a.data.title.localeCompare(b.data.title)
   );
 
-export const getPublicReports = async () =>
-  (await getCollection("reports")).sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
-
 export const getPublicGalleryAlbums = async () =>
   (await getCollection("gallery", ({ data }) => data.approvedForPublic)).sort(
     (a, b) => b.data.date.getTime() - a.data.date.getTime()

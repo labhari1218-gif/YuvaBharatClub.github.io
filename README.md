@@ -34,7 +34,6 @@ Editable content lives in `src/content/`:
 - `pages/*.md`: about, join, contact copy
 - `events/*.md`: event summaries and event detail content
 - `initiatives/*.md`: recurring themes and program pages
-- `reports/*.md`: public report summaries and optional PDF references
 - `gallery/*.json`: album metadata and alt text
 - `team/*.json`: approved public-facing team entries
 
@@ -72,7 +71,6 @@ The included workflow is at `.github/workflows/deploy.yml`.
 public/
   logo/
   images/
-  reports/
 src/
   components/
   content/

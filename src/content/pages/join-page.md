@@ -16,7 +16,7 @@ Yuva Bharat Club grows through students who are willing to participate with care
 - support event planning and on-ground coordination
 - help with moderation, anchoring, or public speaking formats
 - design posters, social assets, and announcement material
-- document activities through notes, photography, and reports
+- document activities through notes, photography, and public summaries
 - assist with outreach and volunteer coordination
 
 ## What to expect

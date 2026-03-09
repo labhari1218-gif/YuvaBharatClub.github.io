@@ -56,6 +56,21 @@ body::before {
   z-index: -3;
 }
 
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.18) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.18) 1px, transparent 1px);
+  background-size: 90px 90px;
+  opacity: 0.2;
+  mix-blend-mode: soft-light;
+  pointer-events: none;
+  z-index: -1;
+  transform: translate3d(0, calc(var(--scroll-progress) * -18px), 0);
+}
+
 .site-aura {
   position: fixed;
   inset: 0;
@@ -73,32 +88,32 @@ body::before {
 }
 
 .site-aura__orb {
-  animation: aura-drift 16s ease-in-out infinite;
+  animation: aura-drift 12s ease-in-out infinite;
 }
 
 .site-aura__orb--saffron {
   top: 10%;
   left: -8%;
-  width: 24rem;
-  height: 24rem;
-  background: radial-gradient(circle, rgba(223, 120, 19, 0.2), transparent 68%);
+  width: 28rem;
+  height: 28rem;
+  background: radial-gradient(circle, rgba(223, 120, 19, 0.24), transparent 68%);
 }
 
 .site-aura__orb--green {
   top: 42%;
   right: -10%;
-  width: 30rem;
-  height: 30rem;
-  background: radial-gradient(circle, rgba(35, 125, 63, 0.18), transparent 70%);
+  width: 34rem;
+  height: 34rem;
+  background: radial-gradient(circle, rgba(35, 125, 63, 0.22), transparent 70%);
   animation-delay: -5s;
 }
 
 .site-aura__orb--navy {
   bottom: -8%;
   left: 24%;
-  width: 22rem;
-  height: 22rem;
-  background: radial-gradient(circle, rgba(1, 59, 105, 0.16), transparent 68%);
+  width: 26rem;
+  height: 26rem;
+  background: radial-gradient(circle, rgba(1, 59, 105, 0.18), transparent 68%);
   animation-delay: -9s;
 }
 
@@ -114,7 +129,7 @@ body::before {
     linear-gradient(90deg, rgba(1, 59, 105, 0.05) 1px, transparent 1px);
   background-size: 28px 28px;
   mask-image: radial-gradient(circle, rgba(0, 0, 0, 0.85), transparent 74%);
-  transform: translate3d(0, calc(var(--scroll-progress) * -40px), 0);
+  transform: translate3d(0, calc(var(--scroll-progress) * -52px), 0) rotate(calc(var(--scroll-progress) * 10deg));
 }
 
 .skip-link {
@@ -347,11 +362,21 @@ main {
 }
 
 .button {
+  position: relative;
+  overflow: hidden;
   border-radius: 999px;
   padding: 0.95rem 1.3rem;
   background: linear-gradient(135deg, var(--color-saffron), #f0912a);
   color: #fff;
   box-shadow: 0 18px 36px rgba(223, 120, 19, 0.18);
+}
+
+.button::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(115deg, transparent 20%, rgba(255, 255, 255, 0.42) 46%, transparent 68%);
+  transform: translateX(-120%);
 }
 
 .button--ghost {
@@ -379,9 +404,25 @@ main {
   background:
     radial-gradient(circle at var(--hero-pointer-x, 50%) var(--hero-pointer-y, 50%), rgba(255, 255, 255, 0.7), transparent 18%),
     radial-gradient(circle, rgba(1, 59, 105, 0.08), transparent 64%);
-  transform: rotate(-9deg);
+  transform: rotate(-9deg) translate3d(0, calc(var(--scroll-progress) * -36px), 0);
   pointer-events: none;
   z-index: 0;
+}
+
+.hero::after {
+  content: "";
+  position: absolute;
+  inset: auto auto 6% -8%;
+  width: 44rem;
+  height: 18rem;
+  border-radius: 45% 55% 55% 45%;
+  background:
+    radial-gradient(circle at 30% 40%, rgba(223, 120, 19, 0.16), transparent 40%),
+    radial-gradient(circle at 70% 55%, rgba(35, 125, 63, 0.16), transparent 40%);
+  filter: blur(20px);
+  opacity: 0.9;
+  pointer-events: none;
+  transform: translate3d(calc(var(--scroll-progress) * 18px), calc(var(--scroll-progress) * -26px), 0);
 }
 
 .hero__grid,
@@ -424,8 +465,8 @@ main {
 .hero__halo {
   border-radius: 999px;
   filter: blur(42px);
-  opacity: 0.6;
-  animation: aura-drift 14s ease-in-out infinite;
+  opacity: 0.72;
+  animation: aura-drift 10s ease-in-out infinite;
 }
 
 .hero__halo--saffron {
@@ -458,13 +499,13 @@ main {
   inset: 6% 0 auto auto;
   width: 44%;
   aspect-ratio: 1;
-  opacity: 0.4;
+  opacity: 0.5;
   background-image:
     linear-gradient(rgba(1, 59, 105, 0.08) 1px, transparent 1px),
     linear-gradient(90deg, rgba(1, 59, 105, 0.08) 1px, transparent 1px);
   background-size: 26px 26px;
   mask-image: radial-gradient(circle at center, rgba(0, 0, 0, 0.8), transparent 70%);
-  transform: perspective(900px) rotateX(68deg) rotateZ(-18deg);
+  transform: perspective(900px) rotateX(68deg) rotateZ(-18deg) translate3d(0, calc(var(--scroll-progress) * -22px), 0);
 }
 
 .hero__eyebrow,
@@ -529,6 +570,7 @@ main {
   overflow: hidden;
   isolation: isolate;
   transform-style: preserve-3d;
+  animation: hero-float 8s ease-in-out infinite;
 }
 
 .hero-card img {
@@ -542,6 +584,7 @@ main {
   object-fit: cover;
   background: rgba(255, 255, 255, 0.96);
   box-shadow: inset 0 0 0 1px rgba(1, 59, 105, 0.06);
+  animation: flag-breathe 9s ease-in-out infinite;
 }
 
 .hero-card__sheen {
@@ -568,6 +611,7 @@ main {
   border: 1px solid rgba(1, 59, 105, 0.1);
   box-shadow: 0 10px 24px rgba(1, 59, 105, 0.12);
   z-index: 2;
+  animation: badge-float 6s ease-in-out infinite;
 }
 
 .quick-values__grid,
@@ -593,6 +637,8 @@ main {
 .quick-values article {
   position: relative;
   overflow: hidden;
+  animation: float-card 9s ease-in-out infinite;
+  animation-delay: var(--float-delay, 0s);
 }
 
 .quick-values article::before,
@@ -693,6 +739,18 @@ main {
   position: relative;
   isolation: isolate;
   transform-style: preserve-3d;
+}
+
+.card,
+.team-card,
+.overview-card,
+.working-area-card,
+.about-story,
+.about-story__side,
+.about-snapshot,
+.cta-banner {
+  animation: float-card 10s ease-in-out infinite;
+  animation-delay: var(--float-delay, 0s);
 }
 
 .card-grid {
@@ -895,6 +953,8 @@ main {
     linear-gradient(180deg, rgba(255, 255, 255, 0.82), rgba(247, 245, 239, 0.9)),
     radial-gradient(circle at top right, rgba(35, 125, 63, 0.12), transparent 42%);
   box-shadow: var(--shadow);
+  animation: float-card 12s ease-in-out infinite;
+  animation-delay: 0.6s;
 }
 
 .gallery-preview__grid {
@@ -909,6 +969,24 @@ main {
   border: 1px solid var(--border);
   box-shadow: var(--shadow);
   object-fit: cover;
+  transition:
+    transform 260ms ease,
+    box-shadow 260ms ease,
+    filter 260ms ease;
+}
+
+.gallery-preview__grid img:nth-child(odd) {
+  animation: image-float 8s ease-in-out infinite;
+}
+
+.gallery-preview__grid img:nth-child(even) {
+  animation: image-float 9.5s ease-in-out infinite reverse;
+}
+
+.gallery-preview__grid img:hover {
+  transform: translateY(-8px) scale(1.03) rotate(-1.5deg);
+  box-shadow: 0 26px 56px rgba(1, 59, 105, 0.18);
+  filter: saturate(1.06);
 }
 
 .gallery-preview__actions {
@@ -983,10 +1061,10 @@ main {
 
 .motion-ready .reveal-on-scroll {
   opacity: 0.32;
-  transform: translate3d(0, 24px, 0) scale(0.99);
+  transform: translate3d(0, 34px, 0) scale(0.975);
   transition:
-    opacity 640ms ease,
-    transform 720ms cubic-bezier(0.22, 1, 0.36, 1);
+    opacity 720ms ease,
+    transform 860ms cubic-bezier(0.22, 1, 0.36, 1);
   transition-delay: var(--reveal-delay, 0ms);
 }
 
@@ -997,20 +1075,21 @@ main {
 
 .tilt-surface {
   transition:
-    transform 220ms ease,
-    box-shadow 220ms ease,
-    border-color 220ms ease;
+    transform 180ms ease,
+    box-shadow 180ms ease,
+    border-color 180ms ease;
   transform:
     perspective(1200px)
     rotateX(var(--tilt-rotate-x, 0deg))
     rotateY(var(--tilt-rotate-y, 0deg))
+    scale(var(--tilt-scale, 1))
     translateZ(0);
 }
 
 .tilt-surface.is-tilting {
   border-color: rgba(1, 59, 105, 0.18);
   box-shadow:
-    0 30px 80px rgba(1, 59, 105, 0.14),
+    0 36px 92px rgba(1, 59, 105, 0.18),
     inset 0 1px 0 rgba(255, 255, 255, 0.8);
 }
 
@@ -1034,6 +1113,11 @@ main {
   transform: translateY(-2px);
 }
 
+.button:hover::after {
+  transform: translateX(120%);
+  transition: transform 700ms ease;
+}
+
 @keyframes aura-drift {
   0%,
   100% {
@@ -1041,7 +1125,64 @@ main {
   }
 
   50% {
-    transform: translate3d(16px, -18px, 0) scale(1.04);
+    transform: translate3d(24px, -28px, 0) scale(1.07);
+  }
+}
+
+@keyframes hero-float {
+  0%,
+  100% {
+    translate: 0 0;
+  }
+
+  50% {
+    translate: 0 -12px;
+  }
+}
+
+@keyframes flag-breathe {
+  0%,
+  100% {
+    transform: scale(1);
+    filter: saturate(1);
+  }
+
+  50% {
+    transform: scale(1.02);
+    filter: saturate(1.05);
+  }
+}
+
+@keyframes badge-float {
+  0%,
+  100% {
+    translate: 0 0;
+  }
+
+  50% {
+    translate: 0 -8px;
+  }
+}
+
+@keyframes float-card {
+  0%,
+  100% {
+    translate: 0 0;
+  }
+
+  50% {
+    translate: 0 -10px;
+  }
+}
+
+@keyframes image-float {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) rotate(0deg);
+  }
+
+  50% {
+    transform: translate3d(0, -8px, 0) rotate(-1deg);
   }
 }
 
@@ -1137,6 +1278,11 @@ main {
 
   .site-aura__mesh {
     display: none;
+  }
+
+  .hero::after {
+    width: 26rem;
+    height: 12rem;
   }
 }
 

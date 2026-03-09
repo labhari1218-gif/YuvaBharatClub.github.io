@@ -1,8 +1,8 @@
 {
   "name": "Documentation Lead",
-  "role": "Student lead for reports and archives",
+  "role": "Student lead for documentation and archives",
   "workingArea": "Documentation",
-  "shortBio": "Turns activities into clear summaries, reports, and archives that future student teams can build on.",
+  "shortBio": "Turns activities into clear summaries, visuals, and archives that future student teams can build on.",
   "photo": "/images/team/team-placeholder.svg",
   "displayOrder": 4,
   "isPublic": true,

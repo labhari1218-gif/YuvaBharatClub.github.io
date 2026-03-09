@@ -28,6 +28,7 @@
           ".sidebar-card",
           ".cta-banner",
           ".gallery-preview",
+          ".gallery-preview__grid img",
           ".detail-hero__grid",
           ".page-hero .container",
           ".site-footer__grid > *",
@@ -39,6 +40,7 @@
     revealTargets.forEach((element, index) => {
       element.classList.add("reveal-on-scroll");
       element.style.setProperty("--reveal-delay", `${Math.min(index % 6, 5) * 70}ms`);
+      element.style.setProperty("--float-delay", `${(index % 7) * 0.7}s`);
     });
 
     const observer = new IntersectionObserver(
@@ -103,13 +105,14 @@
           const rect = element.getBoundingClientRect();
           const px = (event.clientX - rect.left) / rect.width;
           const py = (event.clientY - rect.top) / rect.height;
-          const rotateY = (px - 0.5) * 12;
-          const rotateX = (0.5 - py) * 10;
+          const rotateY = (px - 0.5) * 18;
+          const rotateX = (0.5 - py) * 16;
 
           element.style.setProperty("--tilt-rotate-x", `${rotateX}deg`);
           element.style.setProperty("--tilt-rotate-y", `${rotateY}deg`);
           element.style.setProperty("--tilt-glow-x", `${px * 100}%`);
           element.style.setProperty("--tilt-glow-y", `${py * 100}%`);
+          element.style.setProperty("--tilt-scale", "1.02");
           element.classList.add("is-tilting");
         });
 
@@ -119,6 +122,7 @@
           element.style.removeProperty("--tilt-rotate-y");
           element.style.removeProperty("--tilt-glow-x");
           element.style.removeProperty("--tilt-glow-y");
+          element.style.removeProperty("--tilt-scale");
         });
       });
     }
