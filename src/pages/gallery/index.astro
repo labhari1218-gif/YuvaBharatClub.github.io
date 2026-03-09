@@ -1,14 +1,10 @@
 ---
-import { formatDate } from "../../lib/date";
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import GalleryAlbumCard from "../../components/ui/GalleryAlbumCard.astro";
 import SectionHeading from "../../components/ui/SectionHeading.astro";
-import InstagramPostCard from "../../components/ui/InstagramPostCard.astro";
-import { getInstagramFeed, getPublicGalleryAlbums } from "../../lib/content";
+import { getPublicGalleryAlbums } from "../../lib/content";
 
 const albums = await getPublicGalleryAlbums();
-const instagramFeed = await getInstagramFeed();
-const instagramPosts = instagramFeed?.data.posts ?? [];
 ---
 
 <BaseLayout
@@ -35,21 +31,4 @@ const instagramPosts = instagramFeed?.data.posts ?? [];
       </div>
     </div>
   </section>
-
-  {instagramFeed && instagramPosts.length > 0 && (
-    <section class="section section--cream">
-      <div class="container">
-        <SectionHeading
-          eyebrow="Instagram"
-          title="Instagram archive"
-          description={`All public posts from @${instagramFeed.data.username}, collected here with their images and captions. Last updated ${formatDate(instagramFeed.data.fetchedAt)}.`}
-          actionLabel="Open Instagram"
-          actionHref={instagramFeed.data.profileUrl}
-        />
-        <div class="instagram-grid">
-          {instagramPosts.map((post) => <InstagramPostCard post={post} />)}
-        </div>
-      </div>
-    </section>
-  )}
 </BaseLayout>

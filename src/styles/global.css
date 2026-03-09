@@ -535,6 +535,15 @@ main {
   border-radius: calc(var(--radius-lg) - 10px);
 }
 
+.hero-card__flag {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 3 / 2;
+  object-fit: cover;
+  background: rgba(255, 255, 255, 0.96);
+  box-shadow: inset 0 0 0 1px rgba(1, 59, 105, 0.06);
+}
+
 .hero-card__sheen {
   position: absolute;
   inset: 0;

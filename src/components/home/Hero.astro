@@ -36,7 +36,13 @@ const { settings } = Astro.props;
     <div class="hero__visual">
       <div class="hero-card">
         <div class="hero-card__sheen" aria-hidden="true"></div>
-        <img src={assetUrl("/images/brand/hero-ribbon.svg")} alt="Abstract banner inspired by the club logo" />
+        <img
+          class="hero-card__flag"
+          src={assetUrl("/images/brand/flag-of-india.svg")}
+          alt="Flag of India"
+          width="900"
+          height="600"
+        />
         <div class="hero-card__badge">
           <img src={assetUrl("/logo/ybc-logo-reference.png")} alt="Yuva Bharat Club logo" width="88" height="88" />
           <span>{settings.campusName}</span>
